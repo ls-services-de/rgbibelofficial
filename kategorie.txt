@@ -1,0 +1,141 @@
+<!-------kategorie section start-->
+
+<section class="kategorien" id="kategorien">
+
+    <div class="heading">
+    <h3>Produkt <span>Kategorien</span></h3>
+    </div>
+
+    <div class="swiper kategorien-slider">
+        
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide" data-name="kategorie-1">
+                <img src="https://cdn.discordapp.com/attachments/1010509988017483879/1039574817126494238/food-img-1.png" alt="">
+                <h3>Office</h3>
+                <div class="price">Preis variiert</div>
+            </div>
+
+            <div class="swiper-slide slide" data-name="kategorie-2">
+                <img src="https://cdn.discordapp.com/attachments/1010509988017483879/1039574817126494238/food-img-1.png" alt="">
+                <h3>Low Budget</h3>
+                <div class="price">500€-1250€</div>
+            </div>
+
+            <div class="swiper-slide slide" data-name="kategorie-3">
+                <img src="https://cdn.discordapp.com/attachments/1010509988017483879/1039574817126494238/food-img-1.png" alt="">
+                <h3>Mid Budget</h3>
+                <div class="price">1250€-1750€</div>
+            </div>
+
+            <div class="swiper-slide slide" data-name="kategorie-4">
+                <img src="https://cdn.discordapp.com/attachments/1010509988017483879/1039574817126494238/food-img-1.png" alt="">
+                <h3>High Budget</h3>
+                <div class="price">1750€-3000€</div>
+            </div>
+
+            <div class="swiper-slide slide" data-name="kategorie-5">
+                <img src="https://cdn.discordapp.com/attachments/1010509988017483879/1039574817126494238/food-img-1.png" alt="">
+                <h3>High End</h3>
+                <div class="price">ab 3000€</div>
+            </div>
+<!-- 
+            <div class="swiper-slide slide" data-name="kategorie-6">
+                <img src="https://cdn.discordapp.com/attachments/1010509988017483879/1039574817126494238/food-img-1.png" alt="">
+                <h3>RGBibel Specials</h3>
+                <div class="price">Preis variiert</div>
+            </div> -->
+
+
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    
+
+</section>
+
+
+<!-------kategorie section end-->
+
+
+
+------------------------------------------------------------------------
+
+.kategorien .heading span{
+    background: #04cefe;
+    border-radius: 80px;
+    box-shadow: 0 0 5px #04cefe,
+    0 0 5px #04cefe,
+    0 0 10px #04cefe,
+    0 0 20px #04cefe,
+    0 0 30px #04cefe;
+    color: black;
+    display: inline-block;
+    padding: .5rem 3rem;
+    margin: 20px;
+    
+}
+
+.heading{
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 11rem;
+    font-size: 3.0rem;
+    color: white;
+}
+
+.kategorien .slide{
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.kategorien .slide img{
+    height: 25rem;
+    margin-bottom: 1rem;
+
+}
+
+.kategorien .slide h3{
+    font-size: 2.5rem;
+    padding: 1rem 0;
+    color: white;
+
+}
+
+.kategorien .slide .price{
+    font-size: 2.5rem;
+    color: #04cefe;
+}
+
+-------------------------------------------------------
+
+var swiper = new Swiper(".kategorien-slider", {
+    grabCursor:true,
+    loop:true,
+    centeredSlides:true,
+    spaceBetween:20,
+    pagination: {
+        el:".swiper-pagination",
+        clickable: true,
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            
+        },
+
+        700: {
+            slidesPerView: 2,
+            
+        },
+
+        1000: {
+            slidesPerView:3,
+            
+        },
+    },
+
+
+});
