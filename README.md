@@ -1,7 +1,7 @@
 # rgbibelofficial
 
 
-This website was publiseh by: RGBibel
+This website was published by: RGBibel
 Official Website: Comming soon...
 
 RGBIBELOFFICIAL
@@ -15,7 +15,7 @@ All rights belong to RGBIBELOFFICIAL and LS
 Don't use code for your website.
 --------------------
 
-123
+
 
 -------------
 This website was made by:
