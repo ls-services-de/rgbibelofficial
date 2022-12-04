@@ -254,6 +254,7 @@ body {
     margin-left: 10px;
     background: rgba(255, 255, 255, 0.055);
     border-radius: 5px;
+    font-weight: 600;
  }
 
  .back i{
