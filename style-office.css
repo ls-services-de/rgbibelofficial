@@ -196,6 +196,10 @@ body {
        display: flex;
     }
 
+    .heading h6{
+        display: flex;
+    }
+
 
 }
 
@@ -229,4 +233,29 @@ body {
         display: none;
     }
 
+    
+
+    
+
+ }
+
+
+
+ 
+
+ .back {
+    color: white;
+   margin-bottom: 88vh;
+ }
+
+ .back a{
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+    background: rgba(255, 255, 255, 0.055);
+    border-radius: 5px;
+ }
+
+ .back i{
+    margin: 5px;
  }
