@@ -14,7 +14,7 @@ body {
 
 .container {
     position: relative;
-    margin: 30px;
+    margin: 20px;
 }
 
 .container .card {
@@ -184,3 +184,49 @@ body {
     transform: translateY(0px);
     transition-delay: .7s;
 } 
+
+
+.mobile{
+    display: none;
+}
+
+@media (max-width:991px){
+   
+    #pc{
+       display: flex;
+    }
+
+
+}
+
+@media (max-width:768px){
+    
+    .mobile{
+        display: block;
+    }
+
+    #pc{
+        display: none;
+    }
+
+    #of4{
+        display: none;
+    }
+    
+ }
+ 
+ @media (max-width:450px){
+    .mobile{
+        display: block;
+        margin: auto;
+    }
+
+    #pc{
+        display: none;
+    }
+
+    #of4{
+        display: none;
+    }
+
+ }
