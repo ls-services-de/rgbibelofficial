@@ -20,7 +20,7 @@ const swiper = new Swiper(".mySwiper", {
 /* ========== Fetch the Products =========== */
 const getProducts = async()=> {
     try{
-        const results = await fetch("./data/products.json");
+        const results = await fetch("products.json");
         const data = await results.json();
         const products = data.products;
         return products;
