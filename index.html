@@ -23,6 +23,17 @@
     <title>RGBibel Official</title>
   </head>
   <body >
+
+    <!-----loader-->
+    <div class="loader loader--hidden"></div>
+    <script>
+      window.addEventListener("load", () =>{
+        document.querySelector(".loader").classList.add("loader--hidden");
+        document.querySelector(".loader").addEventListener("transitionen", () => {
+          document.body.removeChild(document.querySelector(".loader"));
+        });
+      });
+    </script>
  
     <!-- ====== Header ====== -->
    
