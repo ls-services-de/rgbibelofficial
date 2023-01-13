@@ -1217,3 +1217,11 @@ form .button-area{
   border-radius: 5px;
 
 }
+
+@media (max-width: 768px) {
+  .flex-box{
+    display: block;
+    width: 90%;
+    margin-left: 20px;
+  }
+}
