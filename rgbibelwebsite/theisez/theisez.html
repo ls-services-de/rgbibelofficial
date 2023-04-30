@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGBIBELOFFICIAL X THEIS EZ</title>
+    <link rel="stylesheet" href="theisez.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+   
+
+<article class="screen">
+    <input type="checkbox" value="None" id="magicButton" name="check" />
+    <label class="main" for="magicButton"></label>
+  
+    <div class="coverImage"></div>
+    <div class="search"></div>
+    <div class="bodyPlayer"></div>
+  
+    <table class="list">
+      <tr class="song">
+        <td class="nr">
+          <h5>1<h5></td>
+                          <td class="title"><h6>Seine Vision<h6></td>
+                          <td class="length"><h5>3:54<h5></td>
+                          <td><input type="checkbox" id="heart"/><label class="zmr" for="heart"></label></td>
+                      </tr>
+                  
+                      <tr class="song">
+                          <td class="nr"><h5>2<h5></td>
+                          <td class="title"><h6 style="color: #04ccfe;">Theis EZ X RGBibel<h6></td>
+                          <td class="length"><h5>3:22<h5></td>
+                          <td><input type="checkbox" id="heart1" checked /><label class="zmr" for="heart1"></label></td>
+                      </tr>
+                  
+                      <!-- <tr class="song">
+                          <td class="nr"><h5>3<h5></td>
+                          <td class="title"><h6>Ride<h6></td>
+                          <td class="length"><h5>3:34<h5></td>
+                          <td><input type="checkbox" id="heart2"/><label class="zmr" for="heart2"></label></td>
+                      </tr> -->
+                      image.png              
+                      <tr class="song">
+                          <td class="nr"><h5>3<h5></td>
+                          <td class="title"><h6>Die Zusammenarbeit<h6></td>
+                          <td class="length"><h5>3:27<h5></td>
+                          <td><input type="checkbox" id="heart3" checked /><label class="zmr" for="heart3"></label></td>
+                      </tr>
+                      
+                      <tr class="song">
+                          <td class="nr"><h5>4<h5></td>
+                          <td class="title"><h6>Die Systeme<h6></td>
+                          <td class="length"><h5>3:08<h5></td>
+                          <td><input type="checkbox" id="heart4"/><label class="zmr" for="heart4"></label></td>
+                      </tr>
+                      
+                      
+                  </table>
+                  
+                  <div class="shadow"></div>
+                  
+                  <div class="bar"></div>
+                  
+                  <div class="info">
+                      <h4>Theis EZ X RGBibel</h4>
+                      <h3>theis ez- pumped up kicks</h3>
+                  </div>
+  <audio preload="auto" id="audio" controls >
+    <source id="audio" src="Theis EZ, Mike Gudemann Ft. Michelle Collin - Pumped Up Kicks.mp3">
+
+      </audio>
+
+                  <table class="player">
+                      <td><input type="checkbox" id="backward"/><label class="backward" for="backward"></label></td>
+                    
+                     <td><button id="play-pause"><i class="fa-solid fa-play"></i></button>
+                       
+                        </td>
+                        <audio id="my-audio" controls>
+                            <source src="Theis EZ, Mike Gudemann Ft. Michelle Collin - Pumped Up Kicks.mp3" type="audio/mp3">
+                          </audio>
+          
+     
+          <script>
+            
+              var audio = document.getElementById("my-audio");
+             var playBtn = document.getElementById("play-pause");
+      
+              playBtn.addEventListener("click", function() {
+                   audio.play();
+            });
+            var audio = document.getElementById("my-audio");
+     var playPauseButton = document.getElementById("play-pause");
+    var isPlaying = false;
+
+    playPauseButton.addEventListener("click", function() {
+     if (isPlaying) {
+     audio.pause();
+     playPauseButton.textContent = "play";
+     } else {
+     audio.play();
+     playPauseButton.textContent = "pause";
+    }
+   isPlaying = !isPlaying;
+    });
+
+
+
+
+
+          </script>
+                    
+                      <td><input type="checkbox" id="forward"/><label class="forward" for="forward"></label></td>
+                  </table>
+                  
+                  <table class="footer">
+                      <td><input type="checkbox" id="love" checked /><label class="love" for="love"></label></td>
+                      <td><input type="checkbox" id="shuffle"/><label class="shuffle" for="shuffle"></label></td>
+                      <td><input type="checkbox" id="repeat" checked /><label class="repeat" for="repeat"></label></td>
+                      <td><input type="checkbox" id="options"/><label class="options" for="options"></label></td>
+                  </table>
+                  
+                  <div class="current"><h2>Click on the titles for mor information</h2></div>
+                  
+              
+          </article>
+
+          
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript">
+        var secretCode = "geheimnis"; // Hier kannst du dein eigenes Geheimwort einsetzen
+        var input = "";
+        var index = 0;
+
+        document.addEventListener("keydown", function(event) {
+            input += event.key;
+            index = input.indexOf(secretCode);
+            if (index == -1) {
+                return;
+            }
+            if (index + secretCode.length == input.length) {
+                alert("Du hast das Geheimwort gefunden!");
+            }
+        });
+    </script>
+</head>
+<body>
+    
+    
+        <p>Finde das Geheimwort:</p>
+        <style>
+            p {
+                font-size: 20px;
+                text-align: center;
+                margin-top: 50px;
+            }
+        </style>
+   
+</body>
+</html>
