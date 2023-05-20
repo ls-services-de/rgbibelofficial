@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unser Team</title>
+    <link rel="stylesheet" href="team.css">
+</head>
+<body>
+    <div class="back">
+        <a href="index.html">Home</a>
+    </div>
+    <h3 class="scroll">Scroll Down</h3>
+    <h2 class="text">Explore our Team Members</h2>
+    <section>
+        <h2 class="innerText">Explore our Team Members</h2>
+    </section>
+    <div class="container">
+        <h2>Team Members</h2>
+        <div class="responsive-container-block outer-container">
+            <div class="responsive-container-block inner-container">
+              <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-4 wk-ipadp-4 headings-container">
+                <p class="text-blk heading-text">
+                  Meet our dream team
+                </p>
+                
+              </div>
+              <div class="responsive-cell-block wk-desk-8 wk-ipadp-8 wk-tab-12 wk-mobile-12 team-members-container">
+                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-mobile-12 wk-tab-12 card-container">
+                  <div class="card">
+                    <img class="card-img" src="https://cdn.discordapp.com/attachments/1026113529616531456/1068995134018039829/RGBIBELOFFICIAL_OUR_TEAM.png">
+                    <p class="text-blk name">
+                      RGBibelOfficial
+                    </p>
+                    <p class="text-blk position">
+                     CEO
+                    </p>
+                  </div>
+                </div>
+                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-mobile-12 wk-tab-12 card-container">
+                  <div class="card">
+                    <img class="card-img" src="https://cdn.discordapp.com/attachments/1026113529616531456/1068995133728624704/OUR_TEAM_LUSOR_KING1.png">
+                    <p class="text-blk name">
+                      Lusor_King1
+                    </p>
+                    <p class="text-blk position">
+                      CO-CEO
+                    </p>
+                  </div>
+                </div>
+                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-mobile-12 wk-tab-12 card-container">
+                  <div class="card">
+                    <img class="card-img" src="https://cdn.discordapp.com/attachments/1026113529616531456/1068995134504566814/LS_UNSER_TEAM.png">
+                    <p class="text-blk name">
+                         Liam Schneider<!--<span>LS-Services</span> --->
+                    </p>
+                    <p class="text-blk position">
+                      Website Developer
+                    </p>
+                    <!-- <p class="desc">
+                        <i><em>LS-Services </em> is the premier  agency specializing in creating custom, modern, and visually stunning <br> websites. With years of experience and a team of talented and dedicated web developers, <br> LS-Services is the perfect choice for your business's web development needs. Our developers have the skills to bring your vision to life and  create a website that will capture your customers' attention and keep them coming back for more. <br> LS-Services is reliable, creative, and professional - <br> the perfect combination for success! </i>
+                    </p> -->
+                  </div>
+                </div>
+
+                <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-mobile-12 wk-tab-12 card-container">
+                  <div class="card">
+                    <img class="card-img" src="https://cdn.discordapp.com/attachments/1026113529616531456/1068995134261301258/SHOPCOPY_OUR_TEAM.png">
+                    <p class="text-blk name">
+                      Shopcopy
+                    </p>
+                    <p class="text-blk position">
+                      Employee
+                    </p>
+                  </div>
+                </div>
+                
+                </div>
+               
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <script>
+        let section = document.querySelector("section");
+        let text = document.querySelector(".text");
+        let innerText = document.querySelector(".innerText");
+        window.addEventListener("scroll", function() {
+            let value = window.scrollY;
+            section.style.clipPath = "circle("+ value +"px at center center)";
+            text.style.left = 100 - value / 5 + "%";
+            innerText.style.left = 100 - value / 5 + "%";
+
+        })
+    </script>
+</body>
+</html>
