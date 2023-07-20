@@ -1,0 +1,122 @@
+{
+  "products": [
+    {
+      "id": 1,
+      
+      "title": "<a href=\"office 500.html\"/>Office 500</a>",
+      "price": "499.99€",
+      "url": "https://media.discordapp.net/attachments/1110877247298076702/1115115203697328218/image-removebg-preview.png?width=410&height=658",
+      "category": "Low-Budget"
+    },
+    {
+      "id": 2,
+      "title": "<a href=\"low-budget700.html\"/>GAMING 700</a>",
+      "price": "699€",
+      "url": "https://cdn.discordapp.com/attachments/1026113529616531456/1087083633040445531/image-removebg-preview_3.png",
+      "category": "Low-Budget"
+
+    },
+    {
+      "id": 3,
+      "title": "<a href=\"low-budget800.html\"/>GAMING 800</a>",
+      "price": "799.99€",
+      "url": "https://cdn.discordapp.com/attachments/1026113529616531456/1087085481784770631/image-removebg-preview_7.png",
+      "category": "Low-Budget"
+    },
+    {
+      "id": 4,
+      "title": "<a href=\"low-budget1000.html\"/>GAMIMG 1000</a>",
+      "price": "999.99€",
+      "url": "https://cdn.discordapp.com/attachments/1026113529616531456/1064317817417125958/image-removebg-preview_3.png",
+      "category": "Low-Budget"
+    },
+
+    {
+      "id": 17,
+      "title": "<a href=\"low-budget1100.html\"/>GAMIMG 1100</a>",
+      "price": "1099.99€",
+      "url": "https://media.discordapp.net/attachments/1110877247298076702/1113165104834424872/image-removebg-preview_29.png?width=492&height=640",
+      "category": "Low-Budget"
+    },
+  
+    {
+      "id": 5,
+      "title": "<a href=\"low-budget1200.html\"/>GAMIMG 1200</a>",
+      "price": "1199.99€",
+      "url": "https://cdn.discordapp.com/attachments/1026113529616531456/1064318396646301836/image-removebg-preview_3.png",
+      "category": "Low-Budget"
+    },
+    {
+      "id": 6,
+      "title": "<a href=\"mid-budget1400.html\"/>GAMING 1400</a>",
+      "price": "1399.99€",
+      "url": "https://cdn.discordapp.com/attachments/1026113529616531456/1064318396646301836/image-removebg-preview_3.png",
+      "category": "Mid-Budget"
+    },
+    {
+      "id": 7,
+      "title": "<a href=\"mid-budget1500.html\"/>GAMING 1500</a>",
+      "price": "1499.99€",
+      "url": "https://media.discordapp.net/attachments/1110877247298076702/1115491641181093978/image-removebg-preview_6.png",
+      "category": "Mid-Budget"
+    },
+    {
+      "id": 8,
+      "title": "<a href=\"mid-budget1700AMD.html\"/>GAMING 1700 AMD</a>",
+      "price": "1699.99€",
+      "url": "https://media.discordapp.net/attachments/1110877247298076702/1128153426178605078/image-removebg-preview_46.png",
+      "category": "Mid-Budget"
+    },
+    {
+      "id": 9,
+      "title": "<a href=\"mid-budget1700NVIDIA.html\"/>GAMING 1700 NVIDIA</a>",
+      "price": "1699.99€",
+      "url": "https://media.discordapp.net/attachments/1110877247298076702/1128153426178605078/image-removebg-preview_46.png",
+      "category": "Mid-Budget"
+    },
+    {
+      "id": 10,
+      "title": "<a href=\"high-budget1900.html\"/>GAMING 1900</a>",
+      "price": "1899.99€",
+      "url": "https://media.discordapp.net/attachments/1110877247298076702/1113165104834424872/image-removebg-preview_29.png?width=512&height=666",
+      "category": "High-Budget"
+    },
+    {
+      "id": 11,
+      "title": "<a href=\"high-budget2000xtxedition.html\"/>GAMING 2000</a>",
+      "price": "1999.99€",
+      "url": "https://media.discordapp.net/attachments/1110877247298076702/1128369798682783884/image-removebg-preview_47.png",
+      "category": "High-Budget"
+    },
+    {
+      "id": 12,
+      "title": "<a href=\"high-budget2500.html\"/>GAMING 2500</a>",
+      "price": "2499.99€",
+      "url": "https://media.discordapp.net/attachments/1110877247298076702/1113156638082347111/image-removebg-preview_17.png?width=536&height=666",
+      "category": "High-Budget"
+    },
+    {
+      "id": 18,
+      "title": "<a href=\"high-end3000.html\"/>GAMING 3000</a>",
+      "price": "2999.99€",
+      "url": "https://cdn.discordapp.com/attachments/1066058084730023996/1069299588646850650/image-removebg-preview_7.png",
+      "category": "High-End"
+    },
+    {
+      "id": 13,
+      "title": "<a href=\"high-end3500vers2.html\"/>GAMING 3500 4090 Edition</a>",
+      "price": "3499,99€",
+      "url": "https://cdn.discordapp.com/attachments/1026113529616531456/1102265448726274068/image-removebg-preview_26.png",
+      "category": "High-End"
+    },
+    {
+      "id": 14,
+      "title": "<a href=\"high-end3500.html\"/>GAMING 3500</a>",
+      "price": "3499,99€",
+      "url": "https://cdn.discordapp.com/attachments/1066058084730023996/1068981782378188851/5000d_Airflow.png",
+      "category": "High-End"
+    }
+   
+  
+  ]
+}
