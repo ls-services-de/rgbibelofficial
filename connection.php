@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "yalusystems_0001200432";
+$password = "FHBUwHgPWOr5R2Tt";
 $dbname = "yalusystems_0001200432"; // Ändern Sie dies entsprechend Ihrer MySQL-Konfiguration
 
 // Verbindung herstellen
