@@ -36,8 +36,8 @@ export async function POST(req) {
       shipping_address_collection: {
         allowed_countries: ['DE', 'AT', 'CH'], // Germany, Austria, Switzerland
       },
-      success_url: `http://rgbibelofficial.de/success`,
-      cancel_url: `http://rgbibelofficial.de/cancel`,
+      success_url: `http://rgbibelofficial.com/success`,
+      cancel_url: `http://rgbibelofficial.com/cancel`,
     });
 
     return NextResponse.json({ url: session.url });

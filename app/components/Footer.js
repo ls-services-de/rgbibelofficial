@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="mb-8 md:mb-0">
-            <h2 className="text-2xl font-bold text-[#04cefe]">RGBibel® UG</h2>
+            <h2 className="text-2xl font-bold text-[#04cefe]">RGBibel®</h2>
             <p className="mt-2">RGBibel® ist eine eingetragene Marke der RaRiTec UG.</p>
           </div>
           <div className="mb-8 md:mb-0 text-white">

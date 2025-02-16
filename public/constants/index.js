@@ -78,7 +78,6 @@ export const vorteile = [
 export const partners = [
   { src: "/assets/tecconsulting.png", alt: 'TecConsulting.de' },
   { src: "/assets/ralphoto.png", alt: 'RalPhotographie' },
-  { src: "/assets/triebwerk.png", alt: 'TriebWerk' },
   { src: "/assets/raritec.png", alt: 'RaRiTec.de' },
   { src: "/assets/rtrservices.png", alt: 'RTR-Service.de' },
   { src: "/assets/theisez.png", alt: 'TheisEZ' },

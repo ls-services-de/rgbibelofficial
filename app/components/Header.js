@@ -32,7 +32,7 @@ const Header = () => {
           <Link href="/products" className="text-white hover:text-dimWhite font-poppins">Shop</Link>
           <Link href="/konfigurator" className="text-white hover:text-dimWhite font-poppins">Konfigurator</Link>
           <a href="/#vision" className="text-white hover:text-dimWhite font-poppins">Kundenbewertungen</a>
-          <Link href="/triebwerk" className="text-white hover:text-dimWhite font-poppins">Triebwerk Energy</Link>
+          <Link href="/bewertung" className="text-white hover:text-dimWhite font-poppins">Bewertung</Link>
         </div>
       </div>
 
@@ -83,7 +83,7 @@ const Header = () => {
           <Link href="/products" className="text-white hover:text-dimWhite font-poppins">Shop</Link>
           <Link href="/konfigurator" className="text-white hover:text-dimWhite font-poppins">Konfigurator</Link>
           <a href="/#vision" className="text-white hover:text-dimWhite font-poppins">Kundenbewertungen</a>
-          <Link href="/triebwerk" className="text-white hover:text-dimWhite font-poppins">Triebwerk Energy</Link>
+          <Link href="/bewertung" className="text-white hover:text-dimWhite font-poppins">Bewertung</Link>
 
           {/* Icons */}
           <div className="flex items-center space-x-6 justify-center">

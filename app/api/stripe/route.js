@@ -32,14 +32,9 @@ export async function POST(req) {
 
     // Create a Checkout Session with the fixed totalAmount
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: [
-        'card',          // Normal credit/debit cards
-        'eps',           // Klarna payment
-        'giropay',       // Google Pay
-        'klarna',        // Apple Pay
-        'link',          // SEPA direct debit
+      payment_method_types: [          // SEPA direct debit
         'sepa_debit',    // Link (Stripe’s one-click payment)
-        'sofort',        // Giropay
+                // Giropay
       ],
       line_items: lineItems, // Use the line items directly
       mode: 'payment',
@@ -50,8 +45,8 @@ export async function POST(req) {
       shipping_address_collection: {
         allowed_countries: ['DE', 'AT', 'CH'], // Germany, Austria, Switzerland
       },
-      success_url: `http://rgbibelofficial.de/success`,
-      cancel_url: `http://rgbibelofficial.de/cancel`,
+      success_url: `http://rgbibelofficial.com/success`,
+      cancel_url: `http://rgbibelofficial.com/cancel`,
     });
 
     console.log('Stripe session created successfully:', session.id); // Log session creation

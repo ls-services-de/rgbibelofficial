@@ -454,7 +454,7 @@ const PCConfigurator = () => {
 
         {step === 2 && (
           <>
-           <div className="flex bg-[#014e61] rounded-full p-1 w-48 mb-10">
+           <div className="flex bg-[#014e61] rounded-full p-1 w-48 mb-10 mt-[50px]">
   {["Intel", "AMD"].map((brand) => (
     <label
       key={brand}
