@@ -18,7 +18,7 @@ export async function POST(req) {
 
     // Create line items array using cart data directly and add 3% to the price
     const lineItems = cart.map((product) => {
-      const increasedPrice = Number(product.price) * 1.015; // Increase by 3%
+      const increasedPrice = Number(product.price) * 1; // Increase by 3%
       return {
         price_data: {
           currency: 'eur',

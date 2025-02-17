@@ -1,48 +1,31 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useState } from "react"
+import PaymentMethodSelector from "./PaymentMethodSelector"
 
-function BuyNowButton({ product }) {
-  const router = useRouter()
+const BuyNowButton = ({ product }) => {
+  const [showPaymentSelector, setShowPaymentSelector] = useState(false)
 
-  const handleBuyNow = async () => {
-    try {
-      // Preis um 10 Euro erhöhen (oder passe den Wert nach Bedarf an)
-      const updatedProduct = {
-        ...product,
-        price: product.price + 10,
-      }
+  const handleBuyNow = () => {
+    setShowPaymentSelector(true)
+  }
 
-      const response = await fetch("/api/stripe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          data: {
-            cart: [{ ...updatedProduct, quantity: 1 }],
-            paymentMethod: "card",
-          },
-        }),
-      })
-
-      const { url } = await response.json()
-      if (url) {
-        window.location.href = url // Weiterleitung zur Stripe-Checkout-Seite
-      }
-    } catch (error) {
-      console.error("Error creating checkout session:", error)
-    }
+  const handleClose = () => {
+    setShowPaymentSelector(false)
   }
 
   return (
-    <button
-      onClick={handleBuyNow}
-      className="mt-4  bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors duration-300"
-    >
-      Jetzt kaufen 
-    </button>
+    <>
+      <button
+        onClick={handleBuyNow}
+        className="mt-4 bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors duration-300"
+      >
+        Jetzt kaufen
+      </button>
+      {showPaymentSelector && <PaymentMethodSelector product={product} onClose={handleClose} />}
+    </>
   )
 }
 
 export default BuyNowButton
+

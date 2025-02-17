@@ -162,7 +162,7 @@ function Cart() {
             >
               <option value="">Zahlungsmethode auswählen</option>
               <option value="stripe">Lastschriftverfahren</option>
-              <option value="paypal">Paypal (+1,5%)</option>
+              <option value="paypal">Kreditkarte und Link (+1,5%)</option>
               <option value="klarna">Klarna (3%)</option>
             </select>
             <button

@@ -26,8 +26,11 @@ export async function POST(req) {
 
     // Erstelle eine Checkout-Session
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: lineItems,
+      payment_method_types: [          // SEPA direct debit
+        'sepa_debit',    // Link (Stripe’s one-click payment)
+                // Giropay
+      ],
+      line_items: lineItems, // Use the line items directly
       mode: 'payment',
       customer: customer.id,
       invoice_creation: {
