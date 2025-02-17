@@ -12,6 +12,7 @@ export const producttop = [
       'SSD: 2TB NVMe PCIe 4.0'
     ],
     image: '/assets/examplepc.png', // Update with the actual path
+    link: '/details/gaming-1700',
   },
   // Add more products as needed
 ];

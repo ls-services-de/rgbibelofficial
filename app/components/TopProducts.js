@@ -60,7 +60,7 @@ const TopProducts = ({producttop}) => {
           React.createElement(
             'a',
             {
-              href: "/products",
+              href: link,
               className: 'self-end mt-4 md:translate-y-[130px] md:mr-[40px] md:mt-0 px-4 py-2 bg-cyan-500 text-white font-bold rounded hover:bg-cyan-600'
             },
             'Zum Shop'
