@@ -86,30 +86,32 @@ const Overview = () => {
   return (
     <>
     <Header />
-    <div className="max-w-3xl mx-auto mt-20 px-4">
+    <div className="max-w-3xl mx-auto mt-20 px-4 overflow-x-hidden">
       <h1 className="text-2xl md:text-3xl text-center font-semibold text-white mb-6">
         {totalItems} Komponenten im Warenkorb
       </h1>
-      <table className="w-full border-collapse text-sm md:text-base">
-        <thead>
-          <tr className="text-primary border-b border-gray-200">
-            <th className="py-2 px-2 md:px-4">Produkt</th>
-            <th className="py-2 px-2 md:px-4">Anzahl</th>
-            <th className="py-2 px-2 md:px-4">Preis</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cart?.map((item) => (
-            <tr key={item.product._id} className="hover:bg-card text-center border-b border-gray-300 text-white">
-              <td className="py-2 px-2 md:px-4 flex items-center">
-                <span className="truncate">{item.product.name}</span>
-              </td>
-              <td className="py-2 px-2 md:px-4">{item.quantity}</td>
-              <td className="py-2 px-2 md:px-4">{(item.product.price * item.quantity).toFixed(2)}€</td>
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse text-sm md:text-base">
+          <thead>
+            <tr className="text-primary border-b border-gray-200">
+              <th className="py-2 px-2 md:px-4">Produkt</th>
+              <th className="py-2 px-2 md:px-4">Anzahl</th>
+              <th className="py-2 px-2 md:px-4">Preis</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {cart?.map((item) => (
+              <tr key={item.product._id} className="hover:bg-card text-center border-b border-gray-300 text-white">
+                <td className="py-2 px-2 md:px-4 flex items-center">
+                  <span className="truncate">{item.product.name}</span>
+                </td>
+                <td className="py-2 px-2 md:px-4">{item.quantity}</td>
+                <td className="py-2 px-2 md:px-4">{(item.product.price * item.quantity).toFixed(2)}€</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       <div className="mt-4 text-white ml-auto">
         <p className="text-lg font-semibold text-right mr-4">Zwischensumme: {cartTotal}€</p>
@@ -158,4 +160,3 @@ const Overview = () => {
 }
 
 export default Overview
-

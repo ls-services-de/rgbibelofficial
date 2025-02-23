@@ -26,6 +26,16 @@ export default {
       },
     },
     {
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    },
+    {
+      name: 'kuehler',
+      title: 'Kühler',
+      type: 'string',
+    },
+    {
       name: 'brand',
       title: 'Brand',
       type: 'string',

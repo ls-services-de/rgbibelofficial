@@ -7,17 +7,12 @@ import Image from 'next/image'
 const testimonials = [
   {
     text: "Ich habe Anfang des Jahres einen PC bei RGBIBEL bestellt und war begeistert: sicher verpackt, sofort einsatzbereit und bis heute einwandfrei im Betrieb. Kleinere Softwareprobleme wurden schnell und kompetent vom Support gelöst. Klare Empfehlung!",
-    name: "M. Ellerbrock",
+    name: "Martin E.",
     image: "/default.jpg"
   },
   {
     text: "Der PC macht, was er soll – läuft schnell und ohne Probleme. Egal ob fürs Zocken, Arbeiten oder einfach für den Alltag, die Leistung reicht völlig aus. Alles fühlt sich hochwertig an, und bisher bin ich echt zufrieden. Preis Leistung ist top also kann ich die pc‘s nur empfehlen.",
-    name: "Warmholdt GmbH",
-    image: "/default.jpg"
-  },
-  {
-    text: "Green Innovations steht an der Spitze der grünen Technologie. Ihre Lösungen sind nicht nur umweltfreundlich, sondern auch äußerst effizient und zukunftsorientiert.",
-    name: "Laura Weber",
+    name: "Warmholdt G.",
     image: "/default.jpg"
   }
 ]

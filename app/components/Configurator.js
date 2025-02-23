@@ -68,7 +68,7 @@ const PCConfigurator = () => {
     if (step === 1) {
       const fetchGehaeuseOptions = async () => {
         try {
-          const query = `*[_type == "component" && type == "gehaeuse"] { _id, name, image, price }`
+          const query = `*[_type == "component" && type == "gehaeuse"] { _id, name, image, price, description, kuehler }`
           const data = await client.fetch(query)
           setGehaeuseOptions(data)
         } catch (error) {
@@ -85,7 +85,7 @@ const PCConfigurator = () => {
       const fetchCpuOptions = async () => {
         try {
           const data = await client.fetch(
-            `*[_type == "component" && type == "cpu" && brand == $selectedCpuBrand]{ _id, name, image, price, recommendedKuehlungsart }`,
+            `*[_type == "component" && type == "cpu" && brand == $selectedCpuBrand]{ _id, name, image, price, recommendedKuehlungsart, description }`,
             { selectedCpuBrand },
           )
           setCpuOptions(data)
@@ -109,7 +109,7 @@ const PCConfigurator = () => {
       const fetchMainboardOptions = async () => {
         try {
           const data = await client.fetch(
-            `*[_type == "component" && type == "motherboard" && references($cpuId)]{ _id, name, image, price, recommendedFor }`,
+            `*[_type == "component" && type == "motherboard" && references($cpuId)]{ _id, name, image, price, recommendedFor, description }`,
             { cpuId: selectedCpu._id },
           )
 
@@ -138,7 +138,10 @@ const PCConfigurator = () => {
       const fetchKuehlungOptions = async () => {
         try {
           const data = await client.fetch(
-            `*[_type == "component" && type == "kuehlung"]{ _id, name, image, price, kuehlungsart }`,
+            `*[_type == "component" && type == "kuehlung" && kuehlungsart == $selectedCoolingType]{ 
+              _id, name, image, price, kuehlungsart, description 
+            }`,
+            { selectedCoolingType },
           )
           setKuehlungOptions(data)
         } catch (error) {
@@ -148,13 +151,13 @@ const PCConfigurator = () => {
 
       fetchKuehlungOptions()
     }
-  }, [selectedMainboard, step])
+  }, [selectedMainboard, selectedCoolingType, step])
 
   useEffect(() => {
     if (selectedMainboard && step === 5) {
       const fetchRamOptions = async () => {
         try {
-          const data = await client.fetch(`*[_type == "component" && type == "ram"]{ _id, name, image, price }`)
+          const data = await client.fetch(`*[_type == "component" && type == "ram"]{ _id, name, image, price, description }`)
           setRamOptions(data)
         } catch (error) {
           console.error("Fehler beim Abrufen der RAM-Optionen:", error)
@@ -169,7 +172,7 @@ const PCConfigurator = () => {
     if (selectedMainboard && step === 6) {
       const fetchSsdOptions = async () => {
         try {
-          const data = await client.fetch(`*[_type == "component" && type == "ssd"]{ _id, name, image, price }`)
+          const data = await client.fetch(`*[_type == "component" && type == "ssd"]{ _id, name, image, price, description }`)
           setSsdOptions(data)
         } catch (error) {
           console.error("Fehler beim Abrufen der SSD-Optionen:", error)
@@ -185,7 +188,7 @@ const PCConfigurator = () => {
       const fetchGpuOptions = async () => {
         try {
           const query = `*[_type == "component" && type == "gpu" ${selectedGpuBrand ? `&& brandgpu == $selectedGpuBrand` : ""}]{
-            _id, name, image, price, brandgpu
+            _id, name, image, price, brandgpu, description
           }`
           const params = selectedGpuBrand ? { selectedGpuBrand } : {}
 
@@ -206,7 +209,7 @@ const PCConfigurator = () => {
       const fetchPowerSupplyOptions = async () => {
         try {
           const data = await client.fetch(
-            `*[_type == "component" && type == "netzteil"]{ _id, name, image, price, recommendedFor }`,
+            `*[_type == "component" && type == "netzteil"]{ _id, name, image, price, recommendedFor, description }`,
           )
 
           const recommended = data.filter(
@@ -406,6 +409,11 @@ const PCConfigurator = () => {
             className="w-full h-[200px] object-contain mb-2 rounded hover:scale-110 transition-all duration-300 ease-out "
           />
           <p className="font-semibold text-center text-white">{option.name}</p>
+          <p className=" text-center text-dimWhite">{option?.description}</p>
+          {option?.kuehler?.length > 0 && (
+  <p className="text-center text-dimWhite">Zusätzlich: {option.kuehler}</p>
+)}
+
           {option.price && <p className="text-center text-primary">{option.price}€</p>}
         </div>
       ))}
@@ -520,12 +528,63 @@ const PCConfigurator = () => {
           </>
         )}
 
-        {step === 4 && (
-          <>
-            <h2 className="text-2xl font-bold mb-4">Wählen Sie Ihre Kühlung</h2>
-            {renderOptions(kuehlungOptions, selectedKuehlung, setSelectedKuehlung)}
-          </>
-        )}
+{step === 4 && (
+        <>
+          <h2 className="text-2xl font-bold mb-4">Wählen Sie Ihre Kühlung</h2>
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex bg-[#014e61] rounded-full p-1 w-48">
+              {["Luft", "Wasser"].map((coolingType) => (
+                <label
+                  key={coolingType}
+                  className={`cursor-pointer w-1/2 text-center py-2 rounded-full transition-all
+                    ${
+                      selectedCoolingType.toLowerCase() === coolingType.toLowerCase()
+                        ? "bg-primary text-white"
+                        : "text-gray-400 hover:text-white"
+                    }`}
+                >
+                  <input
+                    type="radio"
+                    value={coolingType.toLowerCase()}
+                    checked={selectedCoolingType.toLowerCase() === coolingType.toLowerCase()}
+                    onChange={() => setSelectedCoolingType(coolingType.toLowerCase())}
+                    className="hidden"
+                  />
+                  {coolingType}
+                </label>
+              ))}
+            </div>
+          </div>
+          <div className="mb-4">
+            <span className="text-primary font-semibold">Empfohlene Kühlungsart: </span>
+            <span className="text-white">
+              {selectedCpu && selectedCpu.recommendedKuehlungsart === "luft" ? "Luftkühlung" : "Wasserkühlung"}
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {kuehlungOptions.map((option) => (
+              <div
+                key={option._id}
+                className={`cursor-pointer border rounded-lg p-4 transition-all duration-300 ease-out 
+                  transform hover:bg-[#3b3b3b] 
+                  ${selectedKuehlung?._id === option._id ? "border-primary bg-[#3b3b3b]" : "border-gray-300 hover:border-blue-300"}
+                `}
+                onClick={() => setSelectedKuehlung(option)}
+              >
+                <img
+            src={urlFor(option.image).url() || "/placeholder.svg"}
+            alt={option.name}
+            className="w-full h-[200px] object-contain mb-2 rounded hover:scale-110 transition-all duration-300 ease-out "
+          />
+                <p className="font-semibold text-center text-white">{option.name}</p>
+                {option.price && <p className="text-center text-primary">{option.price}€</p>}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      
 
         {step === 5 && (
           <>
@@ -611,7 +670,7 @@ const PCConfigurator = () => {
   <div className="bg-gray-900 rounded-lg p-6 shadow-lg">
     <h2 className="text-3xl font-bold mb-6 text-primary">Zusammenfassung Ihrer Konfiguration</h2>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <div className="space-y-4">
+      <div className="space-y-4 ">
         {[
           { label: "Gehäuse", value: selectedGehaeuse?.name },
           { label: "CPU", value: selectedCpu?.name },
@@ -624,7 +683,7 @@ const PCConfigurator = () => {
         ].map((item, index) => (
           <div key={index} className="flex items-center border-b border-gray-700 pb-2">
             <span className="text-primary font-semibold w-1/3">{item.label}:</span>
-            <span className="text-white">{item.value || "Nicht ausgewählt"}</span>
+            <span className="text-white ml-5">{item.value || "Nicht ausgewählt"}</span>
           </div>
         ))}
         <div className="mt-6 flex items-center">
@@ -637,6 +696,24 @@ const PCConfigurator = () => {
             className="w-20 px-3 py-2 border rounded text-white bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
+        <div className="mt-6 border-t border-gray-700 pt-4">
+            <div className="flex justify-between items-center">
+              <span className="text-primary font-semibold text-xl">Gesamtpreis:</span>
+              <span className="text-white text-2xl font-bold">
+                {(
+                  (selectedGehaeuse?.price || 0) +
+                  (selectedCpu?.price || 0) +
+                  (selectedMainboard?.price || 0) +
+                  (selectedKuehlung?.price || 0) +
+                  (selectedRam?.price || 0) +
+                  (selectedSsd?.price || 0) +
+                  (selectedGpu?.price || 0) +
+                  (selectedPowerSupply?.price || 0)
+                ).toFixed(2)}
+                €
+              </span>
+            </div>
+          </div>
       </div>
       {selectedGehaeuse?.image && (
         <div className="flex items-center justify-center">
@@ -648,6 +725,7 @@ const PCConfigurator = () => {
             />
           </div>
         </div>
+        
       )}
     </div>
   </div>
@@ -655,7 +733,7 @@ const PCConfigurator = () => {
 
         <div className="mt-8 flex justify-between">
           {step > 1 && (
-            <button onClick={() => setStep(step - 1)} className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+            <button onClick={() => setStep(step - 1)} className="px-4 py-2 bg-primary text-white rounded ">
               Zurück
             </button>
           )}
