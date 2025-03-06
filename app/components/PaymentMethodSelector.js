@@ -86,8 +86,8 @@ const PaymentMethodSelector = ({ product, onClose }) => {
         <h2 className="text-2xl font-bold mb-4 text-black">Zahlungsmethode auswählen</h2>
         <select value={paymentMethod} onChange={handlePaymentMethodChange} className="w-full p-2 border rounded mb-4">
           <option value="">Bitte auswählen</option>
-          <option value="card">Kreditkarte</option>
-          <option value="paypal">PayPal (+1,5%)</option>
+          <option value="card">Lastschriftverfahren</option>
+          <option value="paypal">Kreditkarte und Link (+1,5%)</option>
           <option value="klarna">Klarna (+3%)</option>
         </select>
         <div className="mb-4">
