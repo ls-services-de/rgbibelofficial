@@ -28,6 +28,11 @@ export default {
       title: 'Name',
     },
     {
+      name: 'dhlnummer',
+      type: 'string',
+      title: 'Sendungsverfolgungsnummer',
+    },
+    {
       name: 'status',
       type: 'string',
       title: 'Status der Bestellung',
@@ -59,6 +64,12 @@ export default {
       type: 'number',
       title: 'Gesamtpreis',
     },
+    {
+      name: 'montagebericht',
+      type: 'file',
+      title: 'Montagebericht',
+    },
+     
     {
       name: 'creationDate',
       type: 'datetime',
