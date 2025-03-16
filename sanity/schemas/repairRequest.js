@@ -62,7 +62,7 @@ export default {
         title: 'Status',
         options: {
           list: [
-            { title: 'test', value: 'test' },
+            { title: 'zugestellt', value: 'zugestellt' },
             
            
   

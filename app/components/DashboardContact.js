@@ -37,7 +37,7 @@ const ContactCards = () => {
         "Technische Beratung",
         "Support für Fertig-PCs"
       ],
-      email: "pc.rgbibelofficial@gmail.com"
+      email: "t.h@rgbibelofficial.com"
     },
     {
       icon: FaCode,
@@ -49,7 +49,7 @@ const ContactCards = () => {
         "Systemintegration",
         "Behebung von Website-Problemen"
       ],
-      email: "web.rgbibelofficial@gmail.com"
+      email: "l.s@rgbibelofficial.com"
     },
     {
       icon: FaBullhorn,
@@ -61,7 +61,7 @@ const ContactCards = () => {
         "Kooperationen mit Partnern",
         "Influencer-Anfragen"
       ],
-      email: "pr.rgbibelofficial@gmail.com"
+      email: "e.g@rgbibelofficial.com"
     }
   ];
 

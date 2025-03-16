@@ -164,6 +164,7 @@ function WarrantyForm() {
         deliveryMethod,
         packaging,
         supportNumber,
+        status: 'zugestellt',
       })
       console.log('Warranty Document created:', warrantyResponse)
       setSuccess(true)
