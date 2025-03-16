@@ -25,10 +25,10 @@ const Impressum = () => {
             <p>14482 Potsdam</p>
             <p className="mt-4">
               <a
-                href="mailto:info@rgbibelofficial.de"
+                href="mailto:info@rgbibelofficial.com"
                 className="text-[#04cefe] hover:underline"
               >
-                info@rgbibelofficial.de
+                info@rgbibelofficial.com
               </a>
             </p>
 

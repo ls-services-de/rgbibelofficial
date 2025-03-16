@@ -18,9 +18,9 @@ const Footer = () => {
                 <p>14482 Potsdam, Deutschland</p>
               </div>
             </a>
-            <a href="mailto:info@rgbibelofficial.de" className="flex items-center mt-4">
+            <a href="mailto:info@rgbibelofficial.com" className="flex items-center mt-4">
               <img src="/assets/emailicon.png" alt="Email" className="w-6 h-6 mr-2"/>
-              <span>info@rgbibelofficial.de</span>
+              <span>info@rgbibelofficial.com</span>
             </a>
           </div>
           <div className="flex flex-col space-y-2 mt-4 md:mt-0">
