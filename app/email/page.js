@@ -816,7 +816,7 @@ export default function EmailBuilder() {
   const [emailBlocks, setEmailBlocks] = useState([])
   const [newBlockType, setNewBlockType] = useState("text")
   const [newBlockContent, setNewBlockContent] = useState("")
-  const [newButtonUrl, setNewButtonUrl] = useState("https://rgbibelofficial.de/")
+  const [newButtonUrl, setNewButtonUrl] = useState("https://rgbibeloffical.com/")
 
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
   const [editingBlock, setEditingBlock] = useState(null)
@@ -858,7 +858,7 @@ export default function EmailBuilder() {
     setEmailBlocks([...emailBlocks, newBlock])
     setNewBlockContent("")
     if (newBlockType === "button") {
-      setNewButtonUrl("https://rgbibelofficial.de/")
+      setNewButtonUrl("https://rgbibeloffical.com/")
     }
 
     showToast(
@@ -911,107 +911,41 @@ export default function EmailBuilder() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RGBibelOfficial</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #121212;
-      color: #ffffff;
-    }
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .logo {
-      text-align: center;
-      padding: 20px 0;
-    }
-    .logo img {
-      max-width: 250px;
-      height: auto;
-    }
-    .content {
-      background-color: #1e1e1e;
-      padding: 20px;
-      border-radius: 5px;
-      margin-bottom: 20px;
-    }
-    .info-box {
-      background-color: #2a2a2a;
-      padding: 15px;
-      border-radius: 5px;
-      margin: 15px 0;
-    }
-    .button {
-      display: block;
-      background-color: #00c8ff;
-      color: #ffffff;
-      text-align: center;
-      padding: 12px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      margin: 15px 0;
-      font-weight: bold;
-    }
-    .contact {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .footer {
-      text-align: center;
-      color: #cccccc;
-      font-size: 14px;
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #333333;
-    }
-    h1, h2 {
-      text-align: center;
-    }
-    a {
-      color: #00c8ff;
-    }
-    p {
-      margin: 10px 0;
-    }
-  </style>
 </head>
-<body>
-  <div class="container">
-    <div class="logo">
-      <img src="${logoUrl}" alt="RGBibelOfficial Logo">
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #121212; color: #ffffff;">
+  <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+    <div style="text-align: center; padding: 20px 0;">
+      <img src="${logoUrl}" alt="RGBibelOfficial Logo" style="max-width: 250px; height: auto;">
     </div>
-    <div class="content">
+    <div style="background-color: #1e1e1e; padding: 20px; border-radius: 5px; margin-bottom: 20px;">
 `
 
     // Add all blocks to the HTML
     emailBlocks.forEach((block) => {
       switch (block.type) {
         case "header":
-          html += `      <h1>${block.content}</h1>\n`
+          html += `      <h1 style="text-align: center; color: #ffffff;">${block.content}</h1>\n`
           break
         case "text":
           // Split by newlines and wrap each in a paragraph
           const paragraphs = block.content.split("\n").filter((p) => p.trim())
           paragraphs.forEach((p) => {
-            html += `      <p>${p}</p>\n`
+            html += `      <p style="margin: 10px 0; color: #ffffff;">${p}</p>\n`
           })
           break
         case "button":
-          html += `      <a href="${block.url}" class="button">${block.content}</a>\n`
+          html += `      <a href="${block.url}" style="display: block; background-color: #00c8ff; color: #ffffff; text-align: center; padding: 12px 20px; text-decoration: none; border-radius: 5px; margin: 15px 0; font-weight: bold;">${block.content}</a>\n`
           break
       }
     })
 
     // Add footer
     html += `
-      <div class="footer">
-        <p>Wir danken dir nochmals für dein Vertrauen und freuen uns,</p>
-        <p>dich als unseren Kunden begrüßen zu dürfen!</p>
-        <p>Mit freundlichen Grüßen,</p>
-        <p>Das RGBibelOfficial-Team</p>
+      <div style="text-align: center; color: #cccccc; font-size: 14px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #333333;">
+        <p style="margin: 10px 0;">Wir danken dir nochmals für dein Vertrauen und freuen uns,</p>
+        <p style="margin: 10px 0;">dich als unseren Kunden begrüßen zu dürfen!</p>
+        <p style="margin: 10px 0;">Mit freundlichen Grüßen,</p>
+        <p style="margin: 10px 0;">Das RGBibelOfficial-Team</p>
       </div>
     </div>
   </div>
