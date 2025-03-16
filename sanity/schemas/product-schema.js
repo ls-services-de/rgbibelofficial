@@ -158,8 +158,12 @@ const product = {
       type: 'string',
       options: {
         list: [
-          { title: 'Status 1', value: '1' },
-          { title: 'Status 2', value: '2' },
+          { title: 'erhältlich', value: 'erhaeltlich' },
+          { title: 'verzögerung', value: 'verzoegerung' },
+          { title: 'Vorbestellbar', value: 'vorbestellbar' },
+          { title: 'Ausverkauft', value: 'ausverkauft' },
+          { title: 'In kürze verfügbar', value: 'inkuerze' },
+          { title: 'Nur vorbestellbar', value: 'nurvorbestellbar' },
         ],
       },
     },

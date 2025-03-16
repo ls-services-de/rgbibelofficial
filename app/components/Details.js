@@ -115,13 +115,32 @@ function Details({ product }) {
   }, [])
 
   let statusColor = "bg-green-500"
-  let statusText = "erhältlich"
-  let tooltipText = "Das Produkt ist sofort verfügbar und erhältlich."
+  let statusText = "erhaeltlich"
+  let tooltipText = " Das Produkt wird innerhalb von 14 Werktagen verschickt."
 
-  if (product?.status === "2") {
+  if (product?.status === "verzoegerung") {
     statusColor = "bg-orange-500"
     statusText = "kurzfristig lieferbar"
-    tooltipText = "Das Produkt ist kurzfristig lieferbar, innerhalb von wenigen Tagen verfügbar."
+    tooltipText = "Das Produkt könnte aufgrund von unvorhergesehenen Verzögerungen bis zu 21 Werktagen benötigen"
+  }
+  if (product?.status === "vorbestellbar") {
+    statusColor = "bg-red-500"
+    statusText = "vorbestellbar"
+    tooltipText = " Das Produkt ist aktuell nicht auf Lager, aber vorbestellbar. Der Versand erfolgt, sobald es verfügbar ist."
+  }
+  if (product?.status === "ausverkauft") {
+    statusColor = "bg-grey-500"
+    statusText = "Ausverkauft / Nicht mehr verfügbar"
+    tooltipText = "Das Produkt ist dauerhaft nicht erhältlich."
+  }
+  if (product?.status === "inkuerze") {
+    statusColor = "bg-yellow-500"
+    statusText = "In Kürze verfügbar"
+    tooltipText = " Das Produkt ist momentan noch  vorrätig, aber es wird bald verfügbar sein."
+  }
+  if (product?.status === "nurvorbestellbar") {
+    statusColor = "bg-blue-500"
+    statusText = "Nur vorbestellmuss vorbestellt werden."
   }
 
   const adjustedPrice = addWindows ? product.price + 28.9 : product.price
