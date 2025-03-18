@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react"
 import useCartStore from "@/cartStore"
+import { Info } from "lucide-react"
 
 function Details({ product }) {
   const initialImage = product?.image || ""
@@ -13,6 +14,10 @@ function Details({ product }) {
   const [addWindows, setAddWindows] = useState(false)
 
   const addToCart = useCartStore((state) => state.addToCart)
+
+  const handleClick = () => {
+    setShowTooltip(!showTooltip)
+  }
 
   const category = product.category
   console.log(category)
@@ -140,7 +145,8 @@ function Details({ product }) {
   }
   if (product?.status === "nurvorbestellbar") {
     statusColor = "bg-blue-500"
-    statusText = "Nur vorbestellmuss vorbestellt werden."
+    statusText = "Nur vorbestellbar"
+    tooltipText = " Das Produkt muss vorbestellt werden."
   }
 
   const adjustedPrice = addWindows ? product.price + 28.9 : product.price
@@ -302,6 +308,32 @@ function Details({ product }) {
               </ul>
             </div>
           </div>
+          <div className="absolute top-3 right-3 z-10">
+      <div className="relative">
+        <button
+          className="bg-gray-800 text-white rounded-full p-2 shadow-md hover:bg-gray-700 transition-all duration-300 flex items-center justify-center"
+          aria-label="Info"
+          onClick={handleClick}
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
+        >
+          <Info className="w-4 h-4" />
+        </button>
+
+        {/* Tooltip - visible on hover (desktop) or click (mobile) */}
+        {showTooltip && (
+          <div
+            className="absolute top-full mt-2 right-0 bg-gray-800 text-white p-3 rounded-md shadow-lg w-48 text-sm z-20"
+            onClick={() => setShowTooltip(false)}
+          >
+            <div className="relative">
+              <div className="absolute -top-2 right-3 w-3 h-3 bg-gray-800 transform rotate-45"></div>
+              <p>Bild kann nach Konfiguration abweichen</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
         </div>
 
         {/* Price Section */}
