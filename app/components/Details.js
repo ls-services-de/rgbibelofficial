@@ -115,7 +115,7 @@ function Details({ product }) {
   }, [])
 
   let statusColor = "bg-green-500"
-  let statusText = "erhaeltlich"
+  let statusText = "erhältlich"
   let tooltipText = " Das Produkt wird innerhalb von 14 Werktagen verschickt."
 
   if (product?.status === "verzoegerung") {
@@ -235,30 +235,38 @@ function Details({ product }) {
 
             {/* Replace the existing streaming/gaming metrics section with this */}
             {showPerformanceMetrics ? (
-              <div className="flex space-x-8 items-center">
-                <div className="w-1/2">
-                  <div className="flex justify-between text-sm mb-1 text-white">
-                    <span>Streaming:</span>
-                    <span>{product?.pstreaming}%</span>
-                  </div>
-                  <div className="w-full bg-gray-700 h-2 rounded-full">
-                    <div className="bg-[#04cefe] h-2 rounded-full" style={{ width: `${product?.pstreaming}%` }}></div>
-                  </div>
-                </div>
+        <div className="flex space-x-8 items-center">
+          <div className="w-1/2">
+            <div className="flex justify-between text-sm mb-1 text-white">
+              <span>Streaming:</span>
+            </div>
+            <div className="w-full bg-gray-700 h-2 rounded-full">
+              <div className="bg-[#04cefe] h-2 rounded-full" style={{ width: `${product?.pstreaming}%` }}></div>
+            </div>
+            <div className="flex justify-between text-xs mt-1 text-[#04cefe]">
+              <span>Full HD</span>
+              <span>WQHD</span>
+              <span>4K</span>
+            </div>
+          </div>
 
-                <div className="w-1/2">
-                  <div className="flex justify-between text-sm mb-1 text-white">
-                    <span>Gaming:</span>
-                    <span>{product?.pgaming}%</span>
-                  </div>
-                  <div className="w-full bg-gray-700 h-2 rounded-full">
-                    <div className="bg-[#04cefe] h-2 rounded-full" style={{ width: `${product?.pgaming}%` }}></div>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="py-4"></div> // Empty space for non-PC products
-            )}
+          <div className="w-1/2">
+            <div className="flex justify-between text-sm mb-1 text-white">
+              <span>Gaming:</span>
+            </div>
+            <div className="w-full bg-gray-700 h-2 rounded-full">
+              <div className="bg-[#04cefe] h-2 rounded-full" style={{ width: `${product?.pgaming}%` }}></div>
+            </div>
+            <div className="flex justify-between text-xs mt-1 text-[#04cefe]">
+              <span>Full HD</span>
+              <span>WQHD</span>
+              <span>4K</span>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="py-4"></div> // Empty space for non-PC products
+      )}
 
             <div className="grid grid-cols-2 gap-6 mt-4 text-base text-white">
               {/* Product specs */}
