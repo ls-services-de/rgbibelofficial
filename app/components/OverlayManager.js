@@ -89,7 +89,7 @@ const OverlayManager = ({ children }) => {
 
       {/* Passwort-Overlay anzeigen, wenn nicht verifiziert und ein Overlay aktiv */}
       {!passwordVerified && (overlayType === "launch" || overlayType === "maintenance") && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 top-20  z-10 flex items-center justify-center">
           <PasswordOverlay onPasswordCorrect={handlePasswordCorrect} />
         </div>
       )}

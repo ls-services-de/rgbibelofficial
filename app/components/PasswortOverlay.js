@@ -19,7 +19,7 @@ const PasswordOverlay = ({ onPasswordCorrect }) => {
   }
 
   return (
-    <div className="fixed bottom-5 left-0 right-0 flex justify-center p-4">
+    <div className="fixed bottom-5 left-0 right-0 flex justify-center p-4 ">
       <div className="max-w-sm w-full">
         <h1 className="text-sm mb-2 text-center text-white">Passwort erforderlich</h1>
         <form onSubmit={handleSubmit} className="flex items-center justify-center">
