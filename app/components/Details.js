@@ -141,7 +141,7 @@ function Details({ product }) {
   if (product?.status === "inkuerze") {
     statusColor = "bg-yellow-500"
     statusText = "In Kürze verfügbar"
-    tooltipText = " Das Produkt ist momentan noch  vorrätig, aber es wird bald verfügbar sein."
+    tooltipText = " Das Produkt ist momentan nicht  vorrätig, aber es wird bald verfügbar sein."
   }
   if (product?.status === "nurvorbestellbar") {
     statusColor = "bg-blue-500"

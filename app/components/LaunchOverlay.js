@@ -268,7 +268,7 @@ const LaunchOverlay = ({ endDate, onLaunchEnd }) => {
         <div className="absolute inset-0 bg-black/60 z-10" /> {/* Dark overlay for readability */}
         {audioElement}
         <div className="text-center space-y-8 max-w-md mx-auto px-4 z-20 relative">
-          <h1 className="text-4xl md:text-5xl font-thin tracking-wide">RGBibel Warteschlange</h1>
+          <h1 className="text-4xl md:text-5xl font-thin tracking-wide">RGBibelOfficial Warteschlange</h1>
 
           <div className="bg-gray-800/70 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
             <div className="mb-6">
