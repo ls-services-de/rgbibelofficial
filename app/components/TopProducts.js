@@ -44,7 +44,7 @@ const TopProducts = ({producttop}) => {
         React.createElement('img', {
           src: image,
           alt: title,
-          className: 'w-full md:w-1/2 h-auto object-cover mb-4 md:mb-0 md:mr-4'
+          className: 'w-auto md:w-1/2 h-auto max-h-[400px] object-contain mb-4 md:mb-0 md:mr-4'
         }),
         React.createElement(
           'div',
@@ -61,7 +61,7 @@ const TopProducts = ({producttop}) => {
             'a',
             {
               href: link,
-              className: 'self-end mt-4 md:translate-y-[130px] md:mr-[40px] md:mt-0 px-4 py-2 bg-cyan-500 text-white font-bold rounded hover:bg-cyan-600'
+              className: 'self-end mt-4 md:translate-y-[80px] md:mr-[40px] md:mt-0 px-4 py-2 bg-cyan-500 text-white font-bold rounded hover:bg-cyan-600'
             },
             'Zum Shop'
           )

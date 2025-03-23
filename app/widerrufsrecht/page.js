@@ -28,7 +28,7 @@ const Widerrufsrecht = () => {
 
             <p className="text-lg font-semibold mt-4">Ausübung des Widerrufsrechts</p>
             <p>
-              Um das Widerrufsrecht auszuüben, muss der Kunde uns (RGBibel GbR, August-Bebel-Straße 26-53, Medienhaus,
+              Um das Widerrufsrecht auszuüben, muss der Kunde uns (RGBibel UG, August-Bebel-Straße 26-53, Medienhaus,
               14482 Potsdam, E-Mail: info@rgbibelofficial.de) mittels einer eindeutigen Erklärung (z. B. ein mit der
               Post versandter Brief oder eine E-Mail) über seinen Entschluss, den Vertrag zu widerrufen, informieren.
             </p>

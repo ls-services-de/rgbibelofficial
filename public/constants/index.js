@@ -4,17 +4,60 @@
 
 export const producttop = [
   {
-    title: 'GAMING 1700',
+    title: 'Gaming Performance 1000 7700 XT',
     specs: [
-      'CPU: AMD RYZEN 7 7700',
-      'GPU: AMD RX 7900 XT',
-      'RAM: 32GB DDR5-6000',
-      'SSD: 2TB NVMe PCIe 4.0'
+      'CPU: AMD Ryzen 5 8400F',
+      'GPU: Radeon RX 7700 XT (beliebiger Hersteller)',
+      'RAM: Kingston FURY Beast 16GB DDR5-5600 CL36',
+      'SSD: 2Lexar NM710 1TB'
     ],
-    image: '/assets/examplepc.png', // Update with the actual path
-    link: '/details/gaming-1700',
+    image: '/assets/gaming-1000.png', 
+    link: '/details/gaming-performance-1000-7700-xt',
   },
-  // Add more products as needed
+  {
+    title: 'Gaming Performance 1300',
+    specs: [
+      'CPU: AMD Ryzen 5 8400F',
+      'GPU: Radeon RX 9070 (beliebiger Hersteller)',
+      'RAM: Patriot Viper VENOM DIMM Kit 32GB, DDR5-6000, CL30',
+      'SSD: Lexar NM710 1TB'
+    ],
+    image: '/assets/gaming-1300.png', 
+    link: '/details/gaming-performance-1300',
+  },
+  {
+    title: 'Gaming Performance 1500 XT',
+    specs: [
+      'CPU: AMD Ryzen 7 7500F',
+      'GPU: Radeon RX 9070 XT (beliebiger Hersteller)',
+      'RAM: Patriot Viper VENOM DIMM Kit 32GB, DDR5-6000, CL30',
+      'SSD: Lexar NQ790 1TB'
+    ],
+    image: '/assets/gaming-1000.png', // selbe wie oben
+    link: '/details/gaming-performance-1500-xt',
+  },
+  {
+    title: 'GAMING Elite 2000 RTX',
+    specs: [
+      'CPU: AMD Ryzen 7 7700',
+      'GPU: GeForce RTX 5070 Ti (beliebiger Hersteller)',
+      'RAM: Lexar ARES RGB Black32GB, DDR5-6000, CL30-36-36-68',
+      'SSD: Lexar NQ790 2TB'
+    ],
+    image: '/assets/gaming-1300.png', // selbe wie oben
+    link: '/details/gaming-elite-2000-rtx',
+  },
+  {
+    title: 'Gaming ELITE 2150',
+    specs: [
+      'CPU: AMD Ryzen 7 9800X3D',
+      'GPU: Radeon RX 9070 XT (beliebiger Hersteller)',
+      'RAM: Lexar ARES RGB Black 32GB, DDR5-6000, CL30-36-36-68',
+      'SSD: Lexar NQ790 2TB'
+    ],
+    image: '/assets/gaming-1300.png', // selbe wie oben
+    link: '/details/gaming-elite-2150',
+  },
 ];
 
 
@@ -42,18 +85,18 @@ export const promises = [
   },
   {
     icon: "/assets/versprechen2.png",
-    title: 'Qualität',
-    description: 'Jeder unserer PCs wird einem 24-stündigen Belastungstest unterzogen.',
+    title: 'Persönlicher Support',
+    description: 'Wir sind für dich da, vor und nach dem Kauf',
   },
   {
     icon: "/assets/versprechen3.png",
-    title: 'Preis-Leistung',
-    description: 'Maximale Leistung für dein Budget. Wir lassen die Konkurrenz alt aussehen.',
+    title: 'Perfekte Abstimmung',
+    description: ' Alle Komponenten sind aufeinander optimiert, keine Bottlenecks.',
   },
   {
     icon: "/assets/versprechen4.png",
     title: 'Konfiguration',
-    description: 'Immer top Konfigurationen: Schluss mit schlecht konfigurierten Fertig-PCs!',
+    description: 'Wir bieten die beste Hardware ohne versteckte Schwachstellen.',
   },
 ];
 
@@ -85,8 +128,6 @@ export const partners = [
   { src: "/assets/rtrservices.png", alt: 'RTR-Service.de' },
   { src: "/assets/theisez.png", alt: 'TheisEZ' },
   { src:"/assets/tectrading.png", alt: 'TecTrading.eu' },
-  { src: "/assets/deepcool.png", alt: 'Deepcool' },
-  { src: "/assets/asus.png", alt: 'Republic of Gamers' },
 ];
 
 

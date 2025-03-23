@@ -21,7 +21,7 @@ const AGB = () => {
           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg w-full max-w-lg text-left">
             <p className="text-lg font-semibold">1) Geltungsbereich</p>
             <p>
-              1.1 Diese Allgemeinen Geschäftsbedingungen (AGB) der RGBibel GbR (nachfolgend „Verkäufer") gelten für alle
+              1.1 Diese Allgemeinen Geschäftsbedingungen (AGB) der RGBibel UG (nachfolgend „Verkäufer") gelten für alle
               Verträge zur Lieferung von Waren, die ein Kunde mit dem Verkäufer über den Online-Shop des Verkäufers
               abschließt. Etwaige abweichende AGB des Kunden werden nicht berücksichtigt. Es gelten ausschließlich diese
               AGB.
