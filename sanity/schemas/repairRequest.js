@@ -1,6 +1,6 @@
 export default {
     name: 'repairRequest',
-    title: 'Repair Request',
+    title: 'Garantieanfarge',
     type: 'document',
     fields: [
       {

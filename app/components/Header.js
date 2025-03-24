@@ -7,6 +7,7 @@ import { MdLocalShipping } from "react-icons/md";
 import { MdPersonOutline } from 'react-icons/md';
 import useCartStore from "@/cartStore";
 import { UserButton, useUser } from "@clerk/clerk-react";
+import NewsBanner from './News';
 
 const Header = () => {
   const { isSignedIn, user } = useUser();
@@ -18,6 +19,7 @@ const Header = () => {
   };
 
   return (
+    <>
     <nav className="fixed top-0 left-0 right-0 bg-card p-4 flex items-center justify-between z-50">
       {/* Logo */}
       <div className="flex items-center">
@@ -115,6 +117,8 @@ const Header = () => {
         </div>
       )}
     </nav>
+    <NewsBanner />
+    </>
   );
 };
 
