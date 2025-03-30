@@ -87,7 +87,7 @@ function Details({ product }) {
       addToCart({
         product: {
           _id: "zpu-" + product._id,
-          name: "ZPÜ",
+          name: "ZPÜ-Gebühr",
           price: zpu,
           image: "/zpu.png", // Add an image for shipping
         },

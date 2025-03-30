@@ -328,8 +328,18 @@ const PCConfigurator = () => {
           _id: "shipping-costs",
           name: "Versandkosten",
           image: "",
-          price: 50,
+          price: 35.99,
           description: "Versandkosten für die Konfiguration",
+        },
+        quantity: qty,
+      })
+      addToCart({
+        product: {
+          _id: "zpu",
+          name: "ZPÜ-Gebühr",
+          image: "",
+          price: 13.19,
+          description: "ZPÜ-Gebühr Kosten",
         },
         quantity: qty,
       })
@@ -338,7 +348,7 @@ const PCConfigurator = () => {
           _id: "sbearbeitungsgebühr",
           name: "Bearbeitungsgebühr",
           image: "",
-          price: 50,
+          price: 75,
           description: "Bearbeitungsgebühr für die Konfiguration",
         },
         quantity: qty,
