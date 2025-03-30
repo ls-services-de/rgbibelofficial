@@ -20,7 +20,7 @@ const Impressum = () => {
 
           {/* Company Information */}
           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg w-full max-w-lg text-center">
-            <p className="text-lg">RGBibel UG</p>
+            <p className="text-lg">RGBibel UG  (In Gründung)</p>
             <p>August-Bebel-Straße | 26-53 | Medienhaus</p>
             <p>14482 Potsdam</p>
             <p className="mt-4">
@@ -36,7 +36,7 @@ const Impressum = () => {
 
             {/* Representative Information */}
             <p className="text-lg font-semibold">Vertretungsberechtigte Gesellschafter:</p>
-            <p>Tim Hinsche | Ralph Richter</p>
+            <p>Tim Hinsche</p>
 
             <div className="border-t border-gray-500 my-6"></div> {/* Divider Line */}
 
@@ -44,7 +44,7 @@ const Impressum = () => {
             <p className="text-sm">
               Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
             </p>
-            <p className="text-sm">DE [kommt noch]</p>
+            <p className="text-sm">Eintragung in Vorbereitung</p>
           </div>
 
           {/* Bottom Text */}

@@ -57,6 +57,11 @@ function Cart() {
       if (shippingItem) {
         removeFromCart(shippingItem._id, shippingItem.color)
       }
+
+      const zpuItem = cart.find((item) => item._id === `zpu-${productId}`)
+      if (zpuItem) {
+        removeFromCart(zpuItem._id, zpuItem.color)
+      }
     }
   }
 
@@ -130,7 +135,7 @@ function Cart() {
               <td className="py-2 px-2 md:px-4">{product.quantity}</td>
               <td className="py-2 px-2 md:px-4">{(product.price * product.quantity).toFixed(2)}€</td>
               <td className="py-2 px-2 md:px-4">
-                {!product._id.startsWith("windows-") && !product._id.startsWith("shipping-") && (
+                {!product._id.startsWith("windows-") && !product._id.startsWith("shipping-") && !product._id.startsWith("zpu-") && (
                   <FaTrash
                     onClick={() => handleRemoveFromCart(product._id, product.color)}
                     className="text-primary mx-auto cursor-pointer"

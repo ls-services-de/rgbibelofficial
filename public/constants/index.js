@@ -65,16 +65,38 @@ export const producttop = [
 // Import more images as needed
 
 export const images = [
-  { src: "/assets/coreseries.png", alt: 'Core SEries', title: 'CORE SERIES', caption: 'Gebaut für die Ewigkeit' },
-  { src: "/assets/customseries.jpg", alt: 'PROFESSIONAL', title: 'AMD RADEON RX9070 XT', caption: 'Jetzt erhältlich' },
-  { src: "/assets/customseries2.jpg", alt: 'MID BUDGET', title: 'CUSTOM SERIES', caption: 'Individuelle Beratung - Einzigartige Systeme' },
-  { src: "/assets/gamingseries.png", alt: 'High Budget', title: 'GAMING SERIES', caption: 'Maximale Leistung - Fairer Preis' },
-  { src: "/assets/streamlineseries.jpg", alt: 'High Budget', title: 'STREAMLINE SERIES', caption: 'Streaming ohne Kompromisse' },
-  
-  
+  // Video as first slide
+  {
+    type: "video",
+    src: "/assets/slider.mp4", // Replace with your actual video path
+   
+  },
+  // Keep all existing images unchanged
+  { src: "/assets/coreseries.png", alt: "Core SEries", title: "CORE SERIES", caption: "Gebaut für die Ewigkeit" },
+  { src: "/assets/customseries.jpg", alt: "PROFESSIONAL", title: "AMD RADEON RX9070 XT", caption: "Jetzt erhältlich" },
+  {
+    src: "/assets/customseries2.jpg",
+    alt: "MID BUDGET",
+    title: "CUSTOM SERIES",
+    caption: "Individuelle Beratung - Einzigartige Systeme",
+  },
+  {
+    src: "/assets/gamingseries.png",
+    alt: "High Budget",
+    title: "GAMING SERIES",
+    caption: "Maximale Leistung - Fairer Preis",
+  },
+  {
+    src: "/assets/streamlineseries.jpg",
+    alt: "High Budget",
+    title: "STREAMLINE SERIES",
+    caption: "Streaming ohne Kompromisse",
+  },
 
   // Add more images with different captions
-];
+]
+
+
 
 
 export const promises = [

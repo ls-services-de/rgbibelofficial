@@ -12,8 +12,11 @@ function Details({ product }) {
   const [qty, setQty] = useState(1)
   const [showTooltip, setShowTooltip] = useState(false)
   const [addWindows, setAddWindows] = useState(false)
+  const [windowsOption, setWindowsOption] = useState("no-key")
 
   const addToCart = useCartStore((state) => state.addToCart)
+
+  const zpu = 13.19
 
   const handleClick = () => {
     setShowTooltip(!showTooltip)
@@ -30,7 +33,8 @@ function Details({ product }) {
 
   const handleAddToCart = () => {
     // Berechne den Preis des Hauptprodukts und des Windows-Produkts (falls zutreffend)
-    const adjustedPrice = addWindows ? product.price + 28.9 : product.price
+    const windowsPrice = addWindows ? (windowsOption === "with-key" ? 49.95 : 28.9) : 0
+    const adjustedPrice = product.price + windowsPrice
 
     // Berechne den Versandpreis basierend auf der Produktkategorie
     const shippingCost = getShippingCostBasedOnCategory(product.category)
@@ -46,13 +50,16 @@ function Details({ product }) {
       addWindows,
     })
 
-    // Add Windows to the cart if the checkbox is activated
+    // Add Windows to the cart if a Windows option is selected
     if (addWindows) {
+      const windowsName = windowsOption === "with-key" ? "Windows 11 Pro (mit Key)" : "Windows 11 Pro (ohne Key)"
+      const windowsPrice = windowsOption === "with-key" ? 49.95 : 28.9
+
       addToCart({
         product: {
           _id: "windows-" + product._id,
-          name: "Windows",
-          price: 28.9,
+          name: windowsName,
+          price: windowsPrice,
           image: "/windows.png", // Add an image for Windows
         },
         quantity: qty,
@@ -75,41 +82,53 @@ function Details({ product }) {
         associatedProductId: product._id,
       })
     }
+
+    if (zpu > 0 && productType == "pc") {
+      addToCart({
+        product: {
+          _id: "zpu-" + product._id,
+          name: "ZPÜ",
+          price: zpu,
+          image: "/zpu.png", // Add an image for shipping
+        },
+        quantity: qty,
+        color: "",
+        associatedProductId: product._id,
+      })
+    }
   }
 
-   const showPerformanceMetrics = product.type === "pc"
+  const showPerformanceMetrics = product.type === "pc"
 
   // Funktion zur Berechnung der Versandkosten je nach Produktkategorie
   const getShippingCostBasedOnCategory = (product) => {
-    let cost = 0;
-    
+    let cost = 0
 
     switch (productType) {
-        case "mouse":
-            cost = 9.95;
-            break;
-        case "keyboard":
-            cost = 14.95;
-            break;
-        case "monitor":
-            cost = 19.95;
-            break;
-        case "pc":
-            if (adjustedPrice < 2500) {
-                cost = 29.99;
-            } else {
-                cost = 35.99;
-            }
-            break;
-        default:
-            console.warn("Unbekannter Produkttyp, Standardversandkosten werden angewendet.");
-            cost = 34.9;
+      case "mouse":
+        cost = 9.95
+        break
+      case "keyboard":
+        cost = 14.95
+        break
+      case "monitor":
+        cost = 19.95
+        break
+      case "pc":
+        if (adjustedPrice < 2500) {
+          cost = 29.99
+        } else {
+          cost = 35.99
+        }
+        break
+      default:
+        console.warn("Unbekannter Produkttyp, Standardversandkosten werden angewendet.")
+        cost = 34.9
     }
-    
-    console.log(`Produkttyp: ${product.productType}, Versandkosten: ${cost}€`);
-    return cost;
-};
 
+    console.log(`Produkttyp: ${product.productType}, Versandkosten: ${cost}€`)
+    return cost
+  }
 
   const handleTooltipShow = useCallback(() => {
     setShowTooltip(true)
@@ -131,7 +150,8 @@ function Details({ product }) {
   if (product?.status === "vorbestellbar") {
     statusColor = "bg-red-500"
     statusText = "vorbestellbar"
-    tooltipText = " Das Produkt ist aktuell nicht auf Lager, aber vorbestellbar. Der Versand erfolgt, sobald es verfügbar ist."
+    tooltipText =
+      " Das Produkt ist aktuell nicht auf Lager, aber vorbestellbar. Der Versand erfolgt, sobald es verfügbar ist."
   }
   if (product?.status === "ausverkauft") {
     statusColor = "bg-grey-500"
@@ -149,7 +169,8 @@ function Details({ product }) {
     tooltipText = " Das Produkt muss vorbestellt werden."
   }
 
-  const adjustedPrice = addWindows ? product.price + 28.9 : product.price
+  const windowsPrice = addWindows ? (windowsOption === "with-key" ? 49.95 : 28.9) : 0
+  const adjustedPrice = product.price + windowsPrice
 
   // Dynamische Spezifikationen je nach Produkttyp
   const getSpecifications = () => {
@@ -241,38 +262,38 @@ function Details({ product }) {
 
             {/* Replace the existing streaming/gaming metrics section with this */}
             {showPerformanceMetrics ? (
-        <div className="flex space-x-8 items-center">
-          <div className="w-1/2">
-            <div className="flex justify-between text-sm mb-1 text-white">
-              <span>Streaming:</span>
-            </div>
-            <div className="w-full bg-gray-700 h-2 rounded-full">
-              <div className="bg-[#04cefe] h-2 rounded-full" style={{ width: `${product?.pstreaming}%` }}></div>
-            </div>
-            <div className="flex justify-between text-xs mt-1 text-[#04cefe]">
-              <span>Full HD</span>
-              <span>WQHD</span>
-              <span>4K</span>
-            </div>
-          </div>
+              <div className="flex space-x-8 items-center">
+                <div className="w-1/2">
+                  <div className="flex justify-between text-sm mb-1 text-white">
+                    <span>Streaming:</span>
+                  </div>
+                  <div className="w-full bg-gray-700 h-2 rounded-full">
+                    <div className="bg-[#04cefe] h-2 rounded-full" style={{ width: `${product?.pstreaming}%` }}></div>
+                  </div>
+                  <div className="flex justify-between text-xs mt-1 text-[#04cefe]">
+                    <span>Full HD</span>
+                    <span>WQHD</span>
+                    <span>4K</span>
+                  </div>
+                </div>
 
-          <div className="w-1/2">
-            <div className="flex justify-between text-sm mb-1 text-white">
-              <span>Gaming:</span>
-            </div>
-            <div className="w-full bg-gray-700 h-2 rounded-full">
-              <div className="bg-[#04cefe] h-2 rounded-full" style={{ width: `${product?.pgaming}%` }}></div>
-            </div>
-            <div className="flex justify-between text-xs mt-1 text-[#04cefe]">
-              <span>Full HD</span>
-              <span>WQHD</span>
-              <span>4K</span>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="py-4"></div> // Empty space for non-PC products
-      )}
+                <div className="w-1/2">
+                  <div className="flex justify-between text-sm mb-1 text-white">
+                    <span>Gaming:</span>
+                  </div>
+                  <div className="w-full bg-gray-700 h-2 rounded-full">
+                    <div className="bg-[#04cefe] h-2 rounded-full" style={{ width: `${product?.pgaming}%` }}></div>
+                  </div>
+                  <div className="flex justify-between text-xs mt-1 text-[#04cefe]">
+                    <span>Full HD</span>
+                    <span>WQHD</span>
+                    <span>4K</span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="py-4"></div> // Empty space for non-PC products
+            )}
 
             <div className="grid grid-cols-2 gap-6 mt-4 text-base text-white">
               {/* Product specs */}
@@ -309,31 +330,31 @@ function Details({ product }) {
             </div>
           </div>
           <div className="absolute top-3 right-3 z-10">
-      <div className="relative">
-        <button
-          className="bg-gray-800 text-white rounded-full p-2 shadow-md hover:bg-gray-700 transition-all duration-300 flex items-center justify-center"
-          aria-label="Info"
-          onClick={handleClick}
-          onMouseEnter={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
-        >
-          <Info className="w-4 h-4" />
-        </button>
-
-        {/* Tooltip - visible on hover (desktop) or click (mobile) */}
-        {showTooltip && (
-          <div
-            className="absolute top-full mt-2 right-0 bg-gray-800 text-white p-3 rounded-md shadow-lg w-48 text-sm z-20"
-            onClick={() => setShowTooltip(false)}
-          >
             <div className="relative">
-              <div className="absolute -top-2 right-3 w-3 h-3 bg-gray-800 transform rotate-45"></div>
-              <p>Bild kann nach Konfiguration abweichen</p>
+              <button
+                className="bg-gray-800 text-white rounded-full p-2 shadow-md hover:bg-gray-700 transition-all duration-300 flex items-center justify-center"
+                aria-label="Info"
+                onClick={handleClick}
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+              >
+                <Info className="w-4 h-4" />
+              </button>
+
+              {/* Tooltip - visible on hover (desktop) or click (mobile) */}
+              {showTooltip && (
+                <div
+                  className="absolute top-full mt-2 right-0 bg-gray-800 text-white p-3 rounded-md shadow-lg w-48 text-sm z-20"
+                  onClick={() => setShowTooltip(false)}
+                >
+                  <div className="relative">
+                    <div className="absolute -top-2 right-3 w-3 h-3 bg-gray-800 transform rotate-45"></div>
+                    <p>Bild kann nach Konfiguration abweichen</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        )}
-      </div>
-    </div>
         </div>
 
         {/* Price Section */}
@@ -403,17 +424,59 @@ function Details({ product }) {
 
           {/* Windows Checkbox */}
           {productType === "pc" && (
-            <div className="mt-4 flex items-center">
-              <input
-                type="checkbox"
-                id="add-windows"
-                checked={addWindows}
-                onChange={(e) => setAddWindows(e.target.checked)}
-                className="mr-2"
-              />
-              <label htmlFor="add-windows" className="text-white">
-                Windows 11 hinzufügen ( +28,90€ )
-              </label>
+            <div className="mt-4">
+              <div className="text-white mb-2">Windows-Optionen:</div>
+              <div className="flex flex-col space-y-2">
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="no-windows"
+                    name="windows-option"
+                    checked={!addWindows}
+                    onChange={() => setAddWindows(false)}
+                    className="mr-2"
+                  />
+                  <label htmlFor="no-windows" className="text-white">
+                    Kein Windows (System wird ohne Betriebssystem ausgeliefert)
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="windows-no-key"
+                    name="windows-option"
+                    checked={addWindows && windowsOption === "no-key"}
+                    onChange={() => {
+                      setAddWindows(true)
+                      setWindowsOption("no-key")
+                    }}
+                    className="mr-2"
+                  />
+                  <label htmlFor="windows-no-key" className="text-white">
+                    Windows 11 Pro Installation inkl. Treiber (ohne Key!)  28,90 €
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="windows-with-key"
+                    name="windows-option"
+                    checked={addWindows && windowsOption === "with-key"}
+                    onChange={() => {
+                      setAddWindows(true)
+                      setWindowsOption("with-key")
+                    }}
+                    className="mr-2"
+                  />
+                  <label htmlFor="windows-with-key" className="text-white">
+                    Windows 11 Pro Installation inkl. Treiber (mit Key!)  49,95 €
+                  </label>
+                </div>
+                <div className="text-sm text-gray-400 mt-1 flex items-center">
+                  <Info className="w-4 h-4 mr-1" />
+                  Bei Nichtauswahl wird das System ohne Betriebssystem ausgeliefert.
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -423,3 +486,4 @@ function Details({ product }) {
 }
 
 export default Details
+

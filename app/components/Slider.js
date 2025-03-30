@@ -1,13 +1,29 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Pause, Play, ChevronLeft, ChevronRight } from "lucide-react"
 
 const Slider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [progress, setProgress] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const videoRef = useRef(null)
+
+  // Assume the first item is a video
+  const hasVideo = images.length > 0 && images[0].type === "video"
+  const isVideoPlaying = hasVideo && currentIndex === 0
 
   useEffect(() => {
+    // If we're on the video slide, let the video control timing
+    if (isVideoPlaying) {
+      setProgress(0)
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0
+        videoRef.current.play().catch((err) => console.error("Video autoplay failed:", err))
+      }
+      return
+    }
+
+    // For image slides, use the timer
     if (isPaused) return
 
     const interval = setInterval(() => {
@@ -21,7 +37,12 @@ const Slider = ({ images }) => {
     }, 5) // Update progress every 5ms
 
     return () => clearInterval(interval)
-  }, [images.length, isPaused])
+  }, [images.length, isPaused, currentIndex, isVideoPlaying])
+
+  // Handle video end event
+  const handleVideoEnded = () => {
+    goToNext()
+  }
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
@@ -34,24 +55,50 @@ const Slider = ({ images }) => {
   }
 
   const togglePause = () => {
+    if (isVideoPlaying && videoRef.current) {
+      if (isPaused) {
+        videoRef.current.play().catch((err) => console.error("Video play failed:", err))
+      } else {
+        videoRef.current.pause()
+      }
+    }
     setIsPaused(!isPaused)
   }
 
   return (
     <div className="relative w-full h-full overflow-hidden">
-      {images.map((image, index) => (
+      {images.map((item, index) => (
         <div
           key={index}
           className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"}`}
         >
-          <img src={image.src || "/placeholder.svg"} alt={image.alt} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          {item.type === "video" && index === 0 ? (
+            // Video slide
+            <div className="relative w-full h-full">
+              <video
+                ref={videoRef}
+                src={item.src}
+                className="w-full h-full object-cover"
+                muted={false}
+                playsInline
+                onEnded={handleVideoEnded}
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-30 pointer-events-none"></div>
+            </div>
+          ) : (
+            // Image slide
+            <>
+              <img src={item.src || "/placeholder.svg"} alt={item.alt} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+            </>
+          )}
+
           <div className="absolute bottom-[40px] sm:bottom-[80px] left-1/2 transform -translate-x-1/2 text-center text-white">
             <h1 className="text-[32px] sm:text-[64px] font-spartan tracking-[10px] sm:tracking-[25px] uppercase">
-              {image.title}
+              {item.title}
             </h1>
             <p className="text-[16px] sm:text-[30px] font-spartan uppercase text-[#e4e4e4] mt-[-10px] sm:mt-[-15px]">
-              {image.caption}
+              {item.caption}
             </p>
           </div>
         </div>
@@ -84,7 +131,10 @@ const Slider = ({ images }) => {
             <div
               className="bg-[#04cefe] h-full"
               style={{
-                width: `${progress}%`,
+                width:
+                  isVideoPlaying && videoRef.current
+                    ? `${(videoRef.current.currentTime / videoRef.current.duration) * 100}%`
+                    : `${progress}%`,
                 transition: isPaused ? "none" : "width 0.1s linear",
               }}
             ></div>
