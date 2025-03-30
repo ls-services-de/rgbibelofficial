@@ -10,8 +10,9 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "RGBibel Official",
-  description: "RGBibel Official – Dein Experte für hochwertige Gaming-PCs! 🚀 Konfiguriere deinen individuellen Fertig-PC mit unserem leistungsstarken Konfigurator. Profitiere von Custom-Support, erstklassiger Hardware & blitzschnellem Versand. Jetzt PC zusammenstellen!",
+  title: "Die besten Gaming-PCs mit Top Preis-Leistung | RGBibelOfficial",
+  description: "RGBibelOfficial bietet leistungsstarke Gaming-PCs, maßgeschneiderte Streaming-Systeme und hochwertige Fertig-PCs mit unschlagbarem Preis-Leistungs-Verhältnis.",
+  
 };
 
 export default function RootLayout({ children }) {

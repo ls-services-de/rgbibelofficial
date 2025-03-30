@@ -1,12 +1,13 @@
 "use client"
 import { useEffect, useState, useRef } from "react"
-import { Pause, Play, ChevronLeft, ChevronRight } from "lucide-react"
+import { Pause, Play, ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react"
 
 const Slider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [progress, setProgress] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [videoPlayed, setVideoPlayed] = useState(false)
+  const [isMuted, setIsMuted] = useState(false)
   const videoRef = useRef(null)
 
   // Assume the first item is a video
@@ -25,6 +26,7 @@ const Slider = ({ images }) => {
       setProgress(0)
       if (videoRef.current) {
         videoRef.current.currentTime = 0
+        videoRef.current.muted = isMuted
         videoRef.current.play().catch((err) => console.error("Video autoplay failed:", err))
       }
       return
@@ -44,7 +46,14 @@ const Slider = ({ images }) => {
     }, 5) // Update progress every 5ms
 
     return () => clearInterval(interval)
-  }, [images.length, isPaused, currentIndex, isVideoPlaying])
+  }, [images.length, isPaused, currentIndex, isVideoPlaying, isMuted])
+
+  // Update video muted state when isMuted changes
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted
+    }
+  }, [isMuted])
 
   // Handle video end event
   const handleVideoEnded = () => {
@@ -95,6 +104,10 @@ const Slider = ({ images }) => {
     setIsPaused(!isPaused)
   }
 
+  const toggleMute = () => {
+    setIsMuted(!isMuted)
+  }
+
   return (
     <div className="relative w-full h-full overflow-hidden">
       {images.map((item, index) => {
@@ -115,11 +128,20 @@ const Slider = ({ images }) => {
                   ref={videoRef}
                   src={item.src}
                   className="w-full h-full object-cover"
-                  muted={false}
+                  muted={isMuted}
                   playsInline
                   onEnded={handleVideoEnded}
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-30 pointer-events-none"></div>
+
+                {/* Mute button - only visible on video slide */}
+                <button
+                  onClick={toggleMute}
+                  className="absolute top-[100px] right-4 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-all z-10"
+                  aria-label={isMuted ? "Unmute video" : "Mute video"}
+                >
+                  {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                </button>
               </div>
             ) : (
               // Image slide
