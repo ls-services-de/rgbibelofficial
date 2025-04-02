@@ -29,7 +29,7 @@ function Cart() {
     let surchargeRate = 0
     switch (paymentMethod) {
       case "paypal":
-        surchargeRate = 0.015 // 1.5%
+        surchargeRate = 0 // 1.5%
         break
       case "klarna":
         surchargeRate = 0.03 // 3%
