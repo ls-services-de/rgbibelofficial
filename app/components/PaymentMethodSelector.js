@@ -51,7 +51,7 @@ const PaymentMethodSelector = ({ product, onClose }) => {
 
     switch (paymentMethod) {
       case "paypal":
-        return Math.round(basePrice * 1.015) // PayPal: 1.5% surcharge, gerundet
+        return Math.round(basePrice * 1) // PayPal: 1.5% surcharge, gerundet
       case "klarna":
         return Math.round(basePrice * 1.03) // Klarna: 3% surcharge, gerundet
       default:
@@ -122,7 +122,7 @@ const PaymentMethodSelector = ({ product, onClose }) => {
         <select value={paymentMethod} onChange={handlePaymentMethodChange} className="w-full p-2 border rounded mb-4">
           <option value="">Bitte auswählen</option>
           <option value="card">Lastschriftverfahren</option>
-          <option value="paypal">Kreditkarte und Link (+1,5%)</option>
+          <option value="paypal">Kreditkarte und Link</option>
           <option value="klarna">Klarna (+3%)</option>
         </select>
         <div className="mb-4">
