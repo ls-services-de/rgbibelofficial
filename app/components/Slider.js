@@ -16,20 +16,20 @@ const Slider = ({ images }) => {
           goToNext()
           return 0
         }
-        return prevProgress + 0.1 // Adjust the increment to fill in 5 seconds
+        return prevProgress + 0.1
       })
-    }, 5) // Update progress every 5ms
+    }, 5)
 
     return () => clearInterval(interval)
   }, [isPaused, currentIndex])
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+    setCurrentIndex((currentIndex + 1) % images.length)
     setProgress(0)
   }
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
+    setCurrentIndex((currentIndex - 1 + images.length) % images.length)
     setProgress(0)
   }
 
