@@ -66,11 +66,7 @@ export const producttop = [
 
 export const images = [
   // Video as first slide
-  {
-    type: "video",
-    src: "/assets/slider.mp4", // Replace with your actual video path
-   
-  },
+
   // Keep all existing images unchanged
   { src: "/assets/coreseries.png", alt: "Core SEries", title: "CORE SERIES", caption: "Gebaut für die Ewigkeit" },
   { src: "/assets/customseries.jpg", alt: "PROFESSIONAL", title: "AMD RADEON RX9070 XT", caption: "Jetzt erhältlich" },
