@@ -20,7 +20,7 @@ const Impressum = () => {
 
           {/* Company Information */}
           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg w-full max-w-lg text-center">
-            <p className="text-lg">RGBibel UG  (In Gründung)</p>
+            <p className="text-lg">RGBibel UG (haftungsbeschränkt) i.G.</p>
             <p>August-Bebel-Straße | 26-53 | Medienhaus</p>
             <p>14482 Potsdam</p>
             <p className="mt-4">
@@ -45,6 +45,22 @@ const Impressum = () => {
               Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
             </p>
             <p className="text-sm">Eintragung in Vorbereitung</p>
+
+               <div className="border-t border-gray-500 my-6"></div> {/* Divider Line */}
+
+            {/* VAT Information */}
+            <p className="text-sm">
+              Eintragung im Handelsregister:
+            </p>
+            <p className="text-sm"> In Vorbereitung</p>
+
+              <div className="border-t border-gray-500 my-6"></div> {/* Divider Line */}
+
+            {/* VAT Information */}
+            <p className="text-sm">
+             Telefon: +49 1522 4572334
+            </p>
+            <p className="text-sm">  (Keine Anrufe ohne vorherige Terminvereinbarung.)</p>
           </div>
 
           {/* Bottom Text */}
