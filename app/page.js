@@ -23,9 +23,7 @@ const Page = () => {
       <div id='vision'>
         <Video />
       </div>
-      <div className='mt-[200px]'>
-        <PartnerSection partners={partners} />
-      </div>
+      
       <Footer />
     </div>
 
