@@ -9,7 +9,7 @@ export default {
       name: 'pcNumber',
       type: 'string',
       title: 'PC Nummer',
-      readOnly: true,
+     
       
     },
     {
