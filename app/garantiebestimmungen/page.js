@@ -58,9 +58,13 @@ const Garantiebedingungen = () => {
 
             <p className="mt-4">
               Für die Rücksendung von Geräten im Rahmen der freiwilligen Garantie trägt der Kunde die Kosten, sofern nicht ausdrücklich eine andere Vereinbarung getroffen wurde. 
-              Vor der Rücksendung muss der Kunde den Support von RGBibel UG kontaktieren, um das weitere Vorgehen abzustimmen. In bestimmten Fällen, wenn nur eine einzelne 
-              Komponente (z. B. Grafikkarte) von einem Defekt betroffen ist, kann der Kunde beantragen, nur diese Komponente einzusenden und den Rest des PCs bei sich zu behalten. 
-              RGBibel UG übernimmt keine Haftung für Schäden, die durch unsachgemäßes Ausbauen oder unsachgemäße Handhabung entstehen.
+Vor der Rücksendung muss der Kunde den Support von RGBibeOfficial kontaktieren, um das weitere Vorgehen abzustimmen. 
+In bestimmten Fällen, wenn nur eine einzelne Komponente (z. B. Grafikkarte) von einem Defekt betroffen ist, kann der Kunde beantragen, nur diese Komponente einzusenden und den Rest des PCs bei sich zu behalten. 
+RGBibelOfficial übernimmt keine Haftung für Schäden, die durch unsachgemäßes Ausbauen oder unsachgemäße Handhabung entstehen.
+Sendet der Kunde den gesamten PC zurück, ist dieser sorgfältig zu polstern, sodass während des Transports keine Schäden entstehen. 
+Das Gerät darf von außen nicht als Produkt der RGBibeOfficial erkennbar sein (ausgenommen das offizielle Versandlabel). Auch in diesem Fall haftet der Kunde für Beschädigungen, die durch mangelhafte Verpackung entstehen. 
+Die Abholung beim Kunden erfolgt nach Absprache direkt an der Wohnungstür durch den von RGBibelOfficial beauftragten Versanddienstleister.
+Für gesetzliche Gewährleistungsansprüche gelten weiterhin die gesetzlichen Regelungen, die eine Kostenübernahme durch den Händler vorsehen.
             </p>
 
             <p className="mt-4">
