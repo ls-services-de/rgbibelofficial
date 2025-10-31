@@ -82,8 +82,8 @@ Für gesetzliche Gewährleistungsansprüche gelten weiterhin die gesetzlichen Re
           <div className="mt-8 text-center text-sm text-gray-400 max-w-2xl">
             <p>
               Für weitere Informationen zu unseren Garantiebedingungen kontaktieren Sie uns bitte unter{" "}
-              <a href="mailto:info@rgbibelofficial.de" className="text-[#04cefe] hover:underline">
-                info@rgbibelofficial.de
+              <a href="mailto:info@rgbibelofficial.com" className="text-[#04cefe] hover:underline">
+                info@rgbibelofficial.com
               </a>
               .
             </p>
