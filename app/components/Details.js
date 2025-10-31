@@ -11,8 +11,7 @@ function Details({ product }) {
   const [selectedImage, setSelectedImage] = useState(initialImage)
   const [qty, setQty] = useState(1)
   const [showTooltip, setShowTooltip] = useState(false)
-  const [addWindows, setAddWindows] = useState(false)
-  const [windowsOption, setWindowsOption] = useState("no-key")
+  const [windowsOption, setWindowsOption] = useState("none")
 
   const addToCart = useCartStore((state) => state.addToCart)
 
@@ -31,9 +30,42 @@ function Details({ product }) {
 
   const productType = product.type // Now it's safe to access
 
+  const getWindowsPrice = () => {
+    switch (windowsOption) {
+      case "none":
+        return 0
+      case "no-drivers-no-key":
+        return 19.9
+      case "with-drivers-no-key":
+        return 29.9
+      case "no-drivers-with-key":
+        return 39.9
+      case "with-drivers-with-key":
+        return 49.9
+      default:
+        return 0
+    }
+  }
+
+  const getWindowsName = () => {
+    switch (windowsOption) {
+      case "none":
+        return ""
+      case "no-drivers-no-key":
+        return "Windows 11 Pro – Installation ohne Treiber (ohne Key)"
+      case "with-drivers-no-key":
+        return "Windows 11 Pro – Installation inkl. Treiber (ohne Key)"
+      case "no-drivers-with-key":
+        return "Windows 11 Pro – Installation ohne Treiber (mit Key)"
+      case "with-drivers-with-key":
+        return "Windows 11 Pro – Installation inkl. Treiber & Lizenz"
+      default:
+        return ""
+    }
+  }
+
   const handleAddToCart = () => {
-    // Berechne den Preis des Hauptprodukts und des Windows-Produkts (falls zutreffend)
-    const windowsPrice = addWindows ? (windowsOption === "with-key" ? 49.95 : 28.9) : 0
+    const windowsPrice = getWindowsPrice()
     const adjustedPrice = product.price + windowsPrice
 
     // Berechne den Versandpreis basierend auf der Produktkategorie
@@ -44,23 +76,20 @@ function Details({ product }) {
 
     // Add the main product to the cart
     addToCart({
-      product: { ...product, price: product.price },
+      product: { ...product, price: adjustedPrice },
       quantity: qty,
       color: initialColor,
-      addWindows,
+      windowsOption,
     })
 
     // Add Windows to the cart if a Windows option is selected
-    if (addWindows) {
-      const windowsName = windowsOption === "with-key" ? "Windows 11 Pro (mit Key)" : "Windows 11 Pro (ohne Key)"
-      const windowsPrice = windowsOption === "with-key" ? 49.95 : 28.9
-
+    if (windowsOption !== "none") {
       addToCart({
         product: {
           _id: "windows-" + product._id,
-          name: windowsName,
+          name: getWindowsName(),
           price: windowsPrice,
-          image: "/windows.png", // Add an image for Windows
+          image: "/windows.png",
         },
         quantity: qty,
         color: "",
@@ -140,28 +169,28 @@ function Details({ product }) {
 
   let statusColor = "bg-green-500"
   let statusText = "erhältlich"
-  let tooltipText = " Das Produkt wird innerhalb von 14 Werktagen verschickt."
+  let tooltipText = " Das Produkt wird innerhalb von 14 Werktagen verschickt."
 
   if (product?.status === "verzoegerung") {
     statusColor = "bg-orange-500"
     statusText = "kurzfristig lieferbar"
-    tooltipText = "Das Produkt könnte aufgrund von unvorhergesehenen Verzögerungen bis zu 21 Werktagen benötigen"
+    tooltipText = "Das Produkt könnte aufgrund von unvorhergesehenen Verzögerungen bis zu 21 Werktagen benötigen"
   }
   if (product?.status === "vorbestellbar") {
     statusColor = "bg-red-500"
     statusText = "vorbestellbar"
     tooltipText =
-      " Das Produkt ist aktuell nicht auf Lager, aber vorbestellbar. Der Versand erfolgt, sobald es verfügbar ist."
+      " Das Produkt ist aktuell nicht auf Lager, aber vorbestellbar. Der Versand erfolgt, sobald es verfügbar ist."
   }
   if (product?.status === "ausverkauft") {
     statusColor = "bg-grey-500"
     statusText = "Ausverkauft / Nicht mehr verfügbar"
-    tooltipText = "Das Produkt ist dauerhaft nicht erhältlich."
+    tooltipText = "Das Produkt ist dauerhaft nicht erhältlich."
   }
   if (product?.status === "inkuerze") {
     statusColor = "bg-yellow-500"
     statusText = "In Kürze verfügbar"
-    tooltipText = " Das Produkt ist momentan nicht  vorrätig, aber es wird bald verfügbar sein."
+    tooltipText = " Das Produkt ist momentan nicht  vorrätig, aber es wird bald verfügbar sein."
   }
   if (product?.status === "nurvorbestellbar") {
     statusColor = "bg-blue-500"
@@ -169,7 +198,7 @@ function Details({ product }) {
     tooltipText = " Das Produkt muss vorbestellt werden."
   }
 
-  const windowsPrice = addWindows ? (windowsOption === "with-key" ? 49.95 : 28.9) : 0
+  const windowsPrice = getWindowsPrice()
   const adjustedPrice = product.price + windowsPrice
 
   // Dynamische Spezifikationen je nach Produkttyp
@@ -422,61 +451,280 @@ function Details({ product }) {
           {/* Shipping Info */}
           <div className="text-sm text-gray-500 mt-2">zzgl. Versand, inkl. MwSt.</div>
 
-          {/* Windows Checkbox */}
+          {/* Windows Options */}
           {productType === "pc" && (
             <div className="mt-4">
-              <div className="text-white mb-2">Windows-Optionen:</div>
-              <div className="flex flex-col space-y-2">
-                <div className="flex items-center">
-                  <input
-                    type="radio"
-                    id="no-windows"
-                    name="windows-option"
-                    checked={!addWindows}
-                    onChange={() => setAddWindows(false)}
-                    className="mr-2"
-                  />
-                  <label htmlFor="no-windows" className="text-white">
-                    Kein Windows (System wird ohne Betriebssystem ausgeliefert)
-                  </label>
+              <div className="text-white mb-3 text-lg font-semibold">
+                Vorinstallationsoptionen (Windows 11)
+              </div>
+              <div className="text-sm text-gray-400 mb-4">
+                RGBibel bietet für jedes System verschiedene Windows-Optionen, damit Sie selbst entscheiden können, wie
+                weit Ihr PC vorbereitet ausgeliefert wird.
+              </div>
+
+              <div className="flex flex-col space-y-3">
+                {/* Option 1: Kein Betriebssystem */}
+                <div
+                  className={`border rounded-lg p-4 cursor-pointer transition-all ${
+                    windowsOption === "none"
+                      ? "border-[#04cefe] bg-gray-800/50"
+                      : "border-gray-700 bg-gray-900/30 hover:border-gray-600"
+                  }`}
+                  onClick={() => setWindowsOption("none")}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        id="windows-none"
+                        name="windows-option"
+                        checked={windowsOption === "none"}
+                        onChange={() => setWindowsOption("none")}
+                        className="mr-3"
+                      />
+                      <div>
+                        <label htmlFor="windows-none" className="text-white font-medium cursor-pointer">
+                          Option 1: Kein Betriebssystem
+                        </label>
+                      </div>
+                    </div>
+                    <span className="text-[#04cefe] font-bold">0,00 €</span>
+                  </div>
+                  {windowsOption === "none" && (
+                    <div className="mt-3 pl-8 text-sm text-gray-300 space-y-2">
+                      <p>Der PC wird ohne Betriebssystem ausgeliefert.</p>
+                      <p>
+                        Diese Variante eignet sich für Kunden, die Windows oder ein alternatives Betriebssystem (z. B.
+                        Linux) selbst installieren möchten.
+                      </p>
+                      <p className="text-yellow-400">
+                        ⚠️ Der PC ist ohne Betriebssystem nicht direkt nutzbar. Eine manuelle Installation durch den
+                        Kunden ist erforderlich.
+                      </p>
+                    </div>
+                  )}
                 </div>
-                <div className="flex items-center">
-                  <input
-                    type="radio"
-                    id="windows-no-key"
-                    name="windows-option"
-                    checked={addWindows && windowsOption === "no-key"}
-                    onChange={() => {
-                      setAddWindows(true)
-                      setWindowsOption("no-key")
-                    }}
-                    className="mr-2"
-                  />
-                  <label htmlFor="windows-no-key" className="text-white">
-                    Windows 11 Pro Installation inkl. Treiber (ohne Key!)  28,90 €
-                  </label>
+
+                {/* Option 2: Installation ohne Treiber (ohne Key) */}
+                <div
+                  className={`border rounded-lg p-4 cursor-pointer transition-all ${
+                    windowsOption === "no-drivers-no-key"
+                      ? "border-[#04cefe] bg-gray-800/50"
+                      : "border-gray-700 bg-gray-900/30 hover:border-gray-600"
+                  }`}
+                  onClick={() => setWindowsOption("no-drivers-no-key")}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        id="windows-no-drivers-no-key"
+                        name="windows-option"
+                        checked={windowsOption === "no-drivers-no-key"}
+                        onChange={() => setWindowsOption("no-drivers-no-key")}
+                        className="mr-3"
+                      />
+                      <div>
+                        <label
+                          htmlFor="windows-no-drivers-no-key"
+                          className="text-white font-medium cursor-pointer"
+                        >
+                          Option 2: Windows 11 Pro – Installation ohne Treiber (ohne Key)
+                        </label>
+                      </div>
+                    </div>
+                    <span className="text-[#04cefe] font-bold">19,90 €</span>
+                  </div>
+                  {windowsOption === "no-drivers-no-key" && (
+                    <div className="mt-3 pl-8 text-sm text-gray-300 space-y-2">
+                      <p>Windows 11 Pro wird ohne Lizenzschlüssel installiert.</p>
+                      <p>Das System dient zur Ersteinrichtung und Prüfung der Funktionalität.</p>
+                      <div className="mt-2">
+                        <p className="font-medium text-white">Leistungsumfang:</p>
+                        <ul className="list-disc list-inside space-y-1 ml-2">
+                          <li>Windows 11 Pro (unaktiviert, ohne Key)</li>
+                          <li>Keine Treiberinstallation</li>
+                          <li>Laden des EXPO/XMP-Profils</li>
+                          <li>Funktionstest auf Bootfähigkeit</li>
+                        </ul>
+                      </div>
+                      <p className="text-blue-400">Für erfahrene Nutzer, die eigene Treiber und Software installieren möchten.</p>
+                    </div>
+                  )}
                 </div>
-                <div className="flex items-center">
-                  <input
-                    type="radio"
-                    id="windows-with-key"
-                    name="windows-option"
-                    checked={addWindows && windowsOption === "with-key"}
-                    onChange={() => {
-                      setAddWindows(true)
-                      setWindowsOption("with-key")
-                    }}
-                    className="mr-2"
-                  />
-                  <label htmlFor="windows-with-key" className="text-white">
-                    Windows 11 Pro Installation inkl. Treiber (mit Key!)  49,95 €
-                  </label>
+
+                {/* Option 3: Installation inkl. Treiber (ohne Key) */}
+                <div
+                  className={`border rounded-lg p-4 cursor-pointer transition-all ${
+                    windowsOption === "with-drivers-no-key"
+                      ? "border-[#04cefe] bg-gray-800/50"
+                      : "border-gray-700 bg-gray-900/30 hover:border-gray-600"
+                  }`}
+                  onClick={() => setWindowsOption("with-drivers-no-key")}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        id="windows-with-drivers-no-key"
+                        name="windows-option"
+                        checked={windowsOption === "with-drivers-no-key"}
+                        onChange={() => setWindowsOption("with-drivers-no-key")}
+                        className="mr-3"
+                      />
+                      <div>
+                        <label
+                          htmlFor="windows-with-drivers-no-key"
+                          className="text-white font-medium cursor-pointer"
+                        >
+                          Option 3: Windows 11 Pro – Installation inkl. Treiber (ohne Key)
+                        </label>
+                      </div>
+                    </div>
+                    <span className="text-[#04cefe] font-bold">29,90 €</span>
+                  </div>
+                  {windowsOption === "with-drivers-no-key" && (
+                    <div className="mt-3 pl-8 text-sm text-gray-300 space-y-2">
+                      <p>Vollständige Installation mit allen Treibern und Tools, aber ohne Lizenz-Key.</p>
+                      <p>Windows ist nicht aktiviert, aber vollständig funktionsfähig.</p>
+                      <div className="mt-2">
+                        <p className="font-medium text-white">Leistungsumfang:</p>
+                        <ul className="list-disc list-inside space-y-1 ml-2">
+                          <li>Windows 11 Pro (unaktiviert)</li>
+                          <li>Treiberinstallation für NVIDIA / AMD / Intel</li>
+                          <li>Vorinstallierte Tools: GPU-Z, CPU-Z, Fan Control, SignalRGB, HWInfo64, FurMark</li>
+                          <li>6 individuelle RGBibel-Wallpapers</li>
+                          <li>EXPO/XMP-Profil geladen</li>
+                        </ul>
+                      </div>
+                      <p className="text-blue-400">
+                        Ideal für Kunden, die sofort starten möchten und bereits eine gültige Windows-Lizenz besitzen.
+                      </p>
+                    </div>
+                  )}
                 </div>
-                <div className="text-sm text-gray-400 mt-1 flex items-center">
-                  <Info className="w-4 h-4 mr-1" />
-                  Bei Nichtauswahl wird das System ohne Betriebssystem ausgeliefert.
+
+                {/* Option 4: Installation ohne Treiber (mit Key) */}
+                <div
+                  className={`border rounded-lg p-4 cursor-pointer transition-all ${
+                    windowsOption === "no-drivers-with-key"
+                      ? "border-[#04cefe] bg-gray-800/50"
+                      : "border-gray-700 bg-gray-900/30 hover:border-gray-600"
+                  }`}
+                  onClick={() => setWindowsOption("no-drivers-with-key")}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        id="windows-no-drivers-with-key"
+                        name="windows-option"
+                        checked={windowsOption === "no-drivers-with-key"}
+                        onChange={() => setWindowsOption("no-drivers-with-key")}
+                        className="mr-3"
+                      />
+                      <div>
+                        <label
+                          htmlFor="windows-no-drivers-with-key"
+                          className="text-white font-medium cursor-pointer"
+                        >
+                          Option 4: Windows 11 Pro – Installation ohne Treiber (mit Key)
+                        </label>
+                      </div>
+                    </div>
+                    <span className="text-[#04cefe] font-bold">39,90 €</span>
+                  </div>
+                  {windowsOption === "no-drivers-with-key" && (
+                    <div className="mt-3 pl-8 text-sm text-gray-300 space-y-2">
+                      <p>Windows 11 Pro wird installiert und dauerhaft aktiviert.</p>
+                      <p>Treiber und Tools sind in dieser Variante nicht enthalten.</p>
+                      <div className="mt-2">
+                        <p className="font-medium text-white">Leistungsumfang:</p>
+                        <ul className="list-disc list-inside space-y-1 ml-2">
+                          <li>Windows 11 Pro (aktiviert, mit digitalem Lizenz-Key)</li>
+                          <li>Kein Treiberpaket, keine Zusatzsoftware</li>
+                          <li>EXPO/XMP-Profil geladen</li>
+                          <li>Aktivierung über digitale Hardwarelizenz</li>
+                        </ul>
+                      </div>
+                      <p className="text-blue-400">
+                        Für Kunden, die ein aktiviertes Windows wünschen, aber eigene Treiber bevorzugen.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Option 5: Installation inkl. Treiber & Lizenz */}
+                <div
+                  className={`border rounded-lg p-4 cursor-pointer transition-all ${
+                    windowsOption === "with-drivers-with-key"
+                      ? "border-[#04cefe] bg-gray-800/50"
+                      : "border-gray-700 bg-gray-900/30 hover:border-gray-600"
+                  }`}
+                  onClick={() => setWindowsOption("with-drivers-with-key")}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        id="windows-with-drivers-with-key"
+                        name="windows-option"
+                        checked={windowsOption === "with-drivers-with-key"}
+                        onChange={() => setWindowsOption("with-drivers-with-key")}
+                        className="mr-3"
+                      />
+                      <div>
+                        <label
+                          htmlFor="windows-with-drivers-with-key"
+                          className="text-white font-medium cursor-pointer"
+                        >
+                          Option 5: Windows 11 Pro – Installation inkl. Treiber & Lizenz
+                        </label>
+                      </div>
+                    </div>
+                    <span className="text-[#04cefe] font-bold">49,90 €</span>
+                  </div>
+                  {windowsOption === "with-drivers-with-key" && (
+                    <div className="mt-3 pl-8 text-sm text-gray-300 space-y-2">
+                      <p className="font-semibold text-[#04cefe]">Die Komplettlösung – sofort einsatzbereit, getestet und aktiviert.</p>
+                      <div className="mt-2">
+                        <p className="font-medium text-white">Leistungsumfang:</p>
+                        <ul className="list-disc list-inside space-y-1 ml-2">
+                          <li>Windows 11 Pro (aktiviert, mit digitalem Lizenz-Key)</li>
+                          <li>Alle Treiber (NVIDIA / AMD / Intel)</li>
+                          <li>Tools: GPU-Z, CPU-Z, Fan Control, SignalRGB, HWInfo64, FurMark</li>
+                          <li>6 individuelle RGBibel-Wallpapers</li>
+                          <li>EXPO/XMP-Profil geladen</li>
+                          <li>Funktions- und Stabilitätstest</li>
+                        </ul>
+                      </div>
+                      <p className="text-green-400">
+                        💡 Empfohlene Option – perfekt für Kunden, die ihren PC direkt nutzen möchten, ohne weitere
+                        Einrichtung.
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
+
+              <div className="mt-4 p-3 bg-gray-800/50 border border-gray-700 rounded-lg">
+                <p className="text-sm text-gray-300 flex items-start">
+                  <span className="mr-2">🔒</span>
+                  <span>
+                    <strong>Hinweise zur Lizenzaktivierung:</strong> Die Aktivierung erfolgt über eine digitale Lizenz,
+                    die direkt an die Hardware (Mainboard-Firmware) gebunden ist. Ein physischer Lizenzschlüssel oder
+                    Datenträger wird nicht bereitgestellt. Die Lizenz bleibt auch nach Neuinstallationen gültig,
+                    solange keine wesentlichen Hardwareänderungen vorgenommen werden.
+                  </span>
+                </p>
+              </div>
+
+              {windowsOption !== "none" && (
+                <div className="mt-3 text-sm text-gray-400 flex items-center">
+                  <Info className="w-4 h-4 mr-1" />
+                  Bei Varianten ohne Lizenz-Key ist der Kunde verpflichtet, die Aktivierung eigenständig vorzunehmen.
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -486,4 +734,3 @@ function Details({ product }) {
 }
 
 export default Details
-
