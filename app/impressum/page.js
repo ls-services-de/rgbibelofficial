@@ -14,13 +14,13 @@ const Impressum = () => {
         <div className="absolute inset-0 bg-black opacity-90 -z-10"></div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4 pt-[100px]"> {/* Added padding */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4 pt-[100px]">
           {/* Title */}
           <h1 className="text-5xl font-bold text-[#04cefe] mb-8">IMPRESSUM</h1>
 
           {/* Company Information */}
           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg w-full max-w-lg text-center">
-            <p className="text-lg">RGBibel UG (haftungsbeschränkt) i.G.</p>
+            <p className="text-lg">Tim Hinsche – RGBibelOfficial</p>
             <p>August-Bebel-Straße | 26-53 | Medienhaus</p>
             <p>14482 Potsdam</p>
             <p className="mt-4">
@@ -32,41 +32,31 @@ const Impressum = () => {
               </a>
             </p>
 
-            <div className="border-t border-gray-500 my-6"></div> {/* Divider Line */}
+            <div className="border-t border-gray-500 my-6"></div>
 
             {/* Representative Information */}
-            <p className="text-lg font-semibold">Vertretungsberechtigte Gesellschafter:</p>
+            <p className="text-lg font-semibold">Vertretungsberechtigte Person:</p>
             <p>Tim Hinsche</p>
 
-            <div className="border-t border-gray-500 my-6"></div> {/* Divider Line */}
+            <div className="border-t border-gray-500 my-6"></div>
 
             {/* VAT Information */}
             <p className="text-sm">
-              Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
+              Umsatzsteuer-Identifikationsnummer (EU) gemäß § 27 a UStG:
             </p>
-            <p className="text-sm">Eintragung in Vorbereitung</p>
+            <p className="text-sm">DE88940236510</p>
 
-               <div className="border-t border-gray-500 my-6"></div> {/* Divider Line */}
+            <div className="border-t border-gray-500 my-6"></div>
 
-            {/* VAT Information */}
-            <p className="text-sm">
-              Eintragung im Handelsregister:
-            </p>
-            <p className="text-sm"> In Vorbereitung</p>
-
-              <div className="border-t border-gray-500 my-6"></div> {/* Divider Line */}
-
-            {/* VAT Information */}
-            <p className="text-sm">
-             Telefon: +49 1522 4572334
-            </p>
-            <p className="text-sm">  (Keine Anrufe ohne vorherige Terminvereinbarung.)</p>
+            {/* Phone Information */}
+            <p className="text-sm">Telefon: +49 1522 4572334</p>
+            <p className="text-sm">(Keine Anrufe ohne vorherige Terminvereinbarung.)</p>
           </div>
 
           {/* Bottom Text */}
           <div className="mt-8 text-center text-sm text-gray-400 max-w-lg">
             <p>
-              Plattform der EU-Kommission zur Online-Streitbeilegung: 
+              Plattform der EU-Kommission zur Online-Streitbeilegung:{" "}
               <a
                 href="https://ec.europa.eu/odr"
                 className="text-[#04cefe] hover:underline ml-1"
