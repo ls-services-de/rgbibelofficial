@@ -21,7 +21,7 @@ const Impressum = () => {
           {/* Company Information */}
           <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-lg w-full max-w-lg text-center">
             <p className="text-lg">Tim Hinsche – RGBibelOfficial</p>
-            <p>August-Bebel-Straße | 26-53 | Medienhaus</p>
+            <p> Behringstr. 61, 14482 Potsdam</p>
             <p>14482 Potsdam</p>
             <p className="mt-4">
               <a
