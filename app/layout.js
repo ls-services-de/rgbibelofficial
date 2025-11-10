@@ -4,7 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from '@clerk/nextjs'
 import CookieConsent from "./components/CookieConsent";
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import Script from "next/script"; // <--- Wichtig!
+import Script from "next/script"; // ✅ Wichtig für externe Skripte
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,17 +24,17 @@ export default function RootLayout({ children }) {
             <SpeedInsights />
           </OverlayManager>
 
-          {/* Google Analytics */}
+          {/* ✅ Google Analytics einbinden */}
           <Script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-HQFJDEXLTQ"
+            strategy="afterInteractive"
+            src="https://www.googletagmanager.com/gtag/js?id=G-K4TRX1H86Q"
           />
-          <Script id="google-analytics">
+          <Script id="google-analytics" strategy="afterInteractive">
             {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-HQFJDEXLTQ');
+              gtag('config', 'G-K4TRX1H86Q');
             `}
           </Script>
         </body>
