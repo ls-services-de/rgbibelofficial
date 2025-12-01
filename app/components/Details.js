@@ -76,7 +76,7 @@ function Details({ product }) {
 
     // Add the main product to the cart
     addToCart({
-      product: { ...product, price: adjustedPrice },
+      product: { ...product, price: product.price },
       quantity: qty,
       color: initialColor,
       windowsOption,
